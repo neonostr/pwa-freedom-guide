@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
 
@@ -17,18 +18,18 @@ const CONTENT = {
     ],
     install: {
       ios: [
-        { step: "Open this site in Safari.", icon: "menu" },
-        { step: "Tap the Share icon.", icon: "square-plus" },
+        { step: "Open this site in Safari.", icon: "safari" },
+        { step: "Tap the Share icon.", icon: "share" },
         { step: "Choose \"Add to Home Screen.\"", icon: "plus" },
         { step: "Tap Add.", icon: "" },
-        { step: "The app is now on your home screen!", icon: "" },
+        { step: "Launch the app from your home screen for the best experience!", icon: "" },
       ],
       android: [
-        { step: "Open in Chrome or Firefox.", icon: "menu" },
+        { step: "Open in Chrome or Firefox.", icon: "chrome" },
         { step: "Tap the browser menu (⋮ or ≡).", icon: "menu" },
-        { step: "Select \"Add to Home screen.\"", icon: "square-plus" },
+        { step: "Select \"Add to Home screen.\"", icon: "home" },
         { step: "Confirm to install.", icon: "plus" },
-        { step: "The app launches from your home screen!", icon: "" },
+        { step: "Launch the app from your home screen for the full app experience!", icon: "" },
       ],
     },
     why: [
@@ -57,18 +58,18 @@ const CONTENT = {
     ],
     install: {
       ios: [
-        { step: "Diese Seite in Safari öffnen.", icon: "menu" },
-        { step: "Teilen-Symbol antippen.", icon: "square-plus" },
+        { step: "Diese Seite in Safari öffnen.", icon: "safari" },
+        { step: "Teilen-Symbol antippen.", icon: "share" },
         { step: "\"Zum Home-Bildschirm hinzufügen\" wählen.", icon: "plus" },
         { step: "Auf \"Hinzufügen\" tippen.", icon: "" },
-        { step: "Die App erscheint auf deinem Startbildschirm!", icon: "" },
+        { step: "Starte die App vom Startbildschirm für das beste Erlebnis!", icon: "" },
       ],
       android: [
-        { step: "Im Chrome oder Firefox öffnen.", icon: "menu" },
+        { step: "Im Chrome oder Firefox öffnen.", icon: "chrome" },
         { step: "Browsermenü (⋮ oder ≡) antippen.", icon: "menu" },
-        { step: "\"Zum Startbildschirm hinzufügen\" wählen.", icon: "square-plus" },
+        { step: "\"Zum Startbildschirm hinzufügen\" wählen.", icon: "home" },
         { step: "Hinzufügen bestätigen.", icon: "plus" },
-        { step: "Jetzt startet die App vom Startbildschirm!", icon: "" },
+        { step: "Starte die App vom Startbildschirm für das volle App-Erlebnis!", icon: "" },
       ],
     },
     why: [
@@ -97,18 +98,18 @@ const CONTENT = {
     ],
     install: {
       ios: [
-        { step: "Abre este sitio en Safari.", icon: "menu" },
-        { step: "Toca el ícono de Compartir.", icon: "square-plus" },
+        { step: "Abre este sitio en Safari.", icon: "safari" },
+        { step: "Toca el ícono de Compartir.", icon: "share" },
         { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "plus" },
         { step: "Toca Añadir.", icon: "" },
-        { step: "¡Ya tienes la app en tu pantalla de inicio!", icon: "" },
+        { step: "¡Abre la app desde tu pantalla de inicio para la mejor experiencia!", icon: "" },
       ],
       android: [
-        { step: "Abre en Chrome o Firefox.", icon: "menu" },
+        { step: "Abre en Chrome o Firefox.", icon: "chrome" },
         { step: "Toca el menú del navegador (⋮ o ≡).", icon: "menu" },
-        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "square-plus" },
+        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "home" },
         { step: "Confirma para instalar.", icon: "plus" },
-        { step: "¡Ya puedes abrirlo desde tu pantalla de inicio!", icon: "" },
+        { step: "¡Abre desde tu pantalla de inicio para la experiencia completa de app!", icon: "" },
       ],
     },
     why: [
@@ -141,9 +142,38 @@ const ICONS = {
       <rect x="11" y="4" width="2" height="16" rx="1"/><rect x="4" y="11" width="16" height="2" rx="1" />
     </svg>
   ),
-  "square-plus": (
+  home: (
     <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
-      <rect x="5" y="5" width="14" height="14" rx="2"/><rect x="11" y="8" width="2" height="8" rx="1"/><rect x="8" y="11" width="8" height="2" rx="1"/>
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+  ),
+  share: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+    </svg>
+  ),
+  safari: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="2" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M16.24 7.76l-4.95 4.95m0 0l-3.53 3.53" />
+    </svg>
+  ),
+  chrome: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="#4285F4" />
+      <circle cx="12" cy="12" r="4" fill="#FFFFFF" />
+      <path d="M12 8v8" stroke="#FFFFFF" strokeWidth="2" />
+      <path d="M8 12h8" stroke="#FFFFFF" strokeWidth="2" />
+      <path d="M12 12L7 5" stroke="#EA4335" strokeWidth="2" />
+      <path d="M12 12L19 10" stroke="#FBBC05" strokeWidth="2" />
+      <path d="M12 12L16 19" stroke="#34A853" strokeWidth="2" />
     </svg>
   ),
 };
@@ -267,7 +297,9 @@ export default function Index() {
               <div className="flex-1 bg-white/70 dark:bg-[#22235b60] rounded-lg p-4 pb-3 shadow-sm">
                 <h3 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
                   <span className="inline-block w-7 h-7 bg-gray-100 dark:bg-[#2b2e3d] rounded mr-2 flex items-center justify-center font-bold text-purple-500 dark:text-purple-300 text-lg">
-                    
+                    <svg viewBox="0 0 24 24" className="w-5 h-5">
+                      <path d="M12 20.0735C10.2321 20.0735 8.5262 19.5215 7.0998 18.5004C5.67341 17.4793 4.59339 16.0339 4.00122 14.3814C3.40905 12.7289 3.3298 10.9492 3.77643 9.25052C4.22305 7.5518 5.17368 6.01715 6.51256 4.84807C7.85145 3.679 9.51973 2.93539 11.2856 2.71556C13.0515 2.49573 14.8475 2.81097 16.4421 3.62066C18.0367 4.43034 19.355 5.69717 20.239 7.26629C21.1229 8.83541 21.5363 10.632 21.4255 12.4362C21.4255 12.6051 21.3579 12.767 21.2375 12.8873C21.1171 13.0077 20.9553 13.0754 20.7864 13.0754H14.2202L14.9732 17.2493C15.0021 17.3963 15.0009 17.548 14.9695 17.6944C14.9382 17.8407 14.8774 17.9783 14.7912 18.0981C14.7051 18.218 14.596 18.3174 14.471 18.3893C14.346 18.4613 14.208 18.5042 14.0662 18.5152C13.9243 18.5262 13.7821 18.5051 13.6486 18.4532C13.5151 18.4014 13.3933 18.3199 13.2918 18.2142C13.1903 18.1085 13.1114 17.9813 13.0607 17.8415C13.01 17.7017 12.9886 17.5529 12.9983 17.4048L12.9944 17.4121L11.9993 12.4362H7.62526L6.63012 17.4121L6.62619 17.4048C6.60407 17.5732 6.55186 17.7358 6.47266 17.8835C6.39346 18.0313 6.28888 18.161 6.16505 18.2648C6.04122 18.3686 5.90076 18.4443 5.75147 18.4874C5.60217 18.5306 5.44684 18.5404 5.29412 18.5163C5.14139 18.4922 4.99448 18.4347 4.86252 18.3475C4.73056 18.2603 4.61639 18.1451 4.52675 18.0087C4.43711 17.8724 4.37413 17.7179 4.34175 17.5548C4.30937 17.3917 4.30827 17.2237 4.33851 17.0601L5.33757 12.0842C4.88343 11.4783 4.49195 10.8252 4.17105 10.1387C4.07602 9.9269 4.05525 9.69056 4.11177 9.46611C4.16828 9.24167 4.29874 9.04331 4.48473 8.90351C4.67072 8.76371 4.90046 8.69136 5.13315 8.69818C5.36585 8.70499 5.59088 8.79052 5.76832 8.93918C6.17371 9.26555 6.51905 9.6538 6.79012 10.0881C7.06119 10.5224 7.25413 10.9963 7.36167 11.4915H17.6371C17.7446 10.9963 17.9376 10.5224 18.2086 10.0881C18.4797 9.6538 18.825 9.26555 19.2304 8.93918C19.4079 8.79052 19.6329 8.70499 19.8656 8.69818C20.0983 8.69136 20.328 8.76371 20.514 8.90351C20.7 9.04331 20.8305 9.24167 20.887 9.46611C20.9435 9.69056 20.9227 9.9269 20.8277 10.1387C20.5068 10.8252 20.1153 11.4783 19.6612 12.0842L20.6602 17.0601C20.6931 17.2347 20.685 17.4143 20.6365 17.585C20.588 17.7557 20.5005 17.9127 20.3807 18.0442C20.2608 18.1757 20.112 18.2784 19.9457 18.3442C19.7794 18.4101 19.6002 18.4375 19.4209 18.4243C19.2417 18.4111 19.0682 18.3576 18.913 18.2677C18.7577 18.1778 18.6242 18.0539 18.5224 17.9051C18.4207 17.7563 18.3528 17.5867 18.3236 17.4086C18.2943 17.2306 18.3043 17.0487 18.3527 16.8755L19.0292 13.0754H15.782L15.0251 17.2528C14.9962 17.3998 14.9974 17.5515 15.0288 17.6978C15.0601 17.8442 15.1209 17.9818 15.2071 18.1016C15.2932 18.2214 15.4023 18.3208 15.5273 18.3928C15.6523 18.4647 15.7903 18.5076 15.9322 18.5186C16.074 18.5296 16.2162 18.5085 16.3498 18.4566C16.4833 18.4048 16.605 18.3233 16.7065 18.2176C16.808 18.1119 16.887 17.9847 16.9376 17.8449C16.9883 17.7051 17.0097 17.5563 17 17.4082L16.0019 12.4362C16.0019 12.2674 16.0696 12.1055 16.19 11.9852C16.3103 11.8648 16.4722 11.7971 16.6411 11.7971H19.7864C19.9178 10.1978 19.5369 8.60048 18.7004 7.22341C17.8639 5.84633 16.6121 4.75862 15.1454 4.10947C13.6786 3.46031 12.0642 3.28193 10.5038 3.5966C8.94348 3.91126 7.51522 4.70138 6.42893 5.85675C5.34265 7.01212 4.65303 8.47356 4.45187 10.0471C4.25071 11.6207 4.54798 13.2179 5.30241 14.6145C6.05685 16.0111 7.23414 17.13 8.67949 17.8224C10.1248 18.5149 11.753 18.7445 13.3324 18.4767C13.4991 18.4549 13.6676 18.4677 13.8288 18.5143C13.99 18.561 14.1401 18.6405 14.2695 18.7482C14.3989 18.856 14.5046 18.9899 14.5801 19.142C14.6556 19.2941 14.6992 19.4611 14.7082 19.6323C14.7172 19.8035 14.6915 19.9744 14.6326 20.1336C14.5737 20.2927 14.483 20.4363 14.3658 20.5553C14.2487 20.6742 14.1077 20.766 13.9523 20.8252C13.7968 20.8844 13.6304 20.9097 13.4639 20.8997C12.9769 20.8713 12.4931 20.8049 12.0171 20.7009C12.0114 20.7009 12.0057 20.7009 12 20.7009V20.0735Z" fill="#A2AAAD"/>
+                    </svg>
                   </span>
                   iOS (Safari)
                 </h3>
@@ -283,8 +315,11 @@ export default function Index() {
               <div className="flex-1 bg-white/70 dark:bg-[#15302660] rounded-lg p-4 pb-3 shadow-sm">
                 <h3 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
                   <span className="inline-block w-7 h-7 bg-green-100 dark:bg-green-800 rounded mr-2 flex items-center justify-center font-bold text-green-500 dark:text-green-200 text-lg">
-                    <svg viewBox="1 1 22 22" className="w-4 h-4">
-                      <circle cx="12" cy="12" r="9" fill="#00e17e"></circle>
+                    <svg viewBox="0 0 24 24" className="w-5 h-5">
+                      <path d="M17.523 15.3414C17.523 14.7338 17.4391 14.1451 17.2714 13.5754H12V16.0054H15.2196C15.0823 16.6338 14.7177 17.1889 14.1805 17.5643V19.5461H16.1719C17.4600 18.4196 17.9996 16.9154 17.523 15.3414Z" fill="#4285F4"/>
+                      <path d="M11.9999 21C13.7159 21 15.1796 20.3941 16.1718 19.5461L14.1804 17.5643C13.5265 18.0064 12.7152 18.2721 11.9999 18.2721C10.2438 18.2721 8.81532 17.1116 8.28375 15.5775H6.20703V17.6189C7.18553 19.6171 9.45214 21 11.9999 21Z" fill="#34A853"/>
+                      <path d="M8.28387 15.5775C8.1432 15.092 8.06641 14.5765 8.06641 14C8.06641 13.4235 8.1432 12.908 8.28387 12.4225V10.3811H6.20715C5.70674 11.6737 5.43555 12.8005 5.43555 14C5.43555 15.1995 5.70674 16.3263 6.20715 17.6189L8.28387 15.5775Z" fill="#FBBC05"/>
+                      <path d="M11.9999 9.72789C13.3086 9.72789 14.3307 10.1911 15.0795 10.9093L16.8048 9.1839C15.1648 7.64339 13.7011 6.85789 11.9999 6.85789C9.45214 6.85789 7.18553 8.24076 6.20703 10.3811L8.28375 12.4225C8.81532 10.8884 10.2438 9.72789 11.9999 9.72789Z" fill="#EA4335"/>
                     </svg>
                   </span>
                   Android (Chrome/Firefox)
@@ -329,6 +364,7 @@ export default function Index() {
                   href={app.url}
                   className="text-blue-700 dark:text-blue-300 underline underline-offset-2 hover:text-purple-700"
                   target="_blank" rel="noopener noreferrer"
+                  aria-label={`Visit ${app.name} (opens in new window)`}
                 >
                   {app.name}
                 </a>

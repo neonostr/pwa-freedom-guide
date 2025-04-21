@@ -17,14 +17,14 @@ const QRCode: React.FC<QRCodeProps> = ({ data, size = 200 }) => {
       width: size,
       margin: 1,
       color: {
-        dark: document.documentElement.classList.contains("dark") ? "#ffffff" : "#000000",
-        light: "transparent",
+        dark: document.documentElement.classList.contains("dark") ? "#000000" : "#000000",
+        light: "#ffffff", // Always white background for better contrast
       },
     }).catch(err => console.error("Error generating QR code:", err));
-  }, [data, size, document.documentElement.classList.contains("dark")]);
+  }, [data, size]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center bg-white rounded-md p-2">
       <canvas ref={canvasRef} width={size} height={size} />
     </div>
   );

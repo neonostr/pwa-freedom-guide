@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from "react";
-// Use only the allowed icons from lucide-react!
 import { BadgeDollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,7 +57,6 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
       if (timerId) clearInterval(timerId);
       if (timeoutId) clearTimeout(timeoutId);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, step]);
 
   // Custom amount only accept numeric vals
@@ -178,6 +176,17 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                 <div className="text-red-500 text-center">{error}</div>
               ) : (
                 <>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-1">Custom amount (sats)</label>
+                    <input
+                      type="text"
+                      value={customAmount}
+                      onChange={handleCustomAmountChange}
+                      onFocus={() => setAmount(0)}
+                      className="w-full p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700"
+                      placeholder="Enter custom amount"
+                    />
+                  </div>
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {PRESET_AMOUNTS.map(presetAmount => (
                       <Button
@@ -192,17 +201,6 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                         {presetAmount.toLocaleString()} sats
                       </Button>
                     ))}
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Custom amount (sats)</label>
-                    <input
-                      type="text"
-                      value={customAmount}
-                      onChange={handleCustomAmountChange}
-                      onFocus={() => setAmount(0)}
-                      className="w-full p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700"
-                      placeholder="Enter custom amount"
-                    />
                   </div>
                 </>
               )}
