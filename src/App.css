@@ -40,3 +40,40 @@
 .read-the-docs {
   color: #888;
 }
+
+/* --- Custom Landing Page Styles --- */
+:root {
+  font-family: system-ui, ui-sans-serif, Arial, sans-serif;
+}
+
+.main-bg {
+  background: linear-gradient(120deg, #f1f0fb 0%, #fff 80%);
+}
+
+.dark .main-bg {
+  background: linear-gradient(130deg, #1a1f2c 25%, #282841 80%);
+}
+
+body {
+  background: var(--background, #fff);
+  transition: background 0.5s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {height: 0.7em;width: 0.7em;}
+::-webkit-scrollbar-thumb {background: #dbd7f5;}
+.dark ::-webkit-scrollbar-thumb {background: #242454;}
+
+@media (max-width: 600px) {
+  .main-bg {
+    padding: 0;
+  }
+  header nav {
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
