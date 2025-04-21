@@ -343,15 +343,16 @@ export default function Index() {
           <DonationButton />
         </div>
         <div>
-          {CONTENT[lang].builtBy}{" "}
+          Built by{" "}
           <a 
             href="https://github.com/neonostr" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            {CONTENT[lang].developerName}
-          </a>, {CONTENT[lang].developerDescription}
+            Neo
+          </a>
+          , freedom‑first app developer.
         </div>
       </footer>
     </>
