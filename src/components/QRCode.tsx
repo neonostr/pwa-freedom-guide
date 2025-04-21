@@ -19,8 +19,8 @@ const QRCode: React.FC<QRCodeProps> = ({ data, size = 200 }) => {
       width: size,
       margin: 1,
       color: {
-        dark: isDarkMode ? "#ffffff" : "#000000",
-        light: "#ffffff", // Changed from "transparent" to "#ffffff"
+        dark: "#000000",  // Always black for better visibility
+        light: "#ffffff", // Always white background
       },
     }).catch(err => console.error("Error generating QR code:", err));
   }, [data, size]);

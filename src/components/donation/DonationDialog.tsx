@@ -87,7 +87,8 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
     
     setIsLoading(true);
     try {
-      const invoiceData = await generateInvoice(finalAmount, lnurlData);
+      // Changed recipient from "neo21" to "pwa"
+      const invoiceData = await generateInvoice(finalAmount, lnurlData, "pwa");
       console.log("Invoice generated:", invoiceData);
       setInvoice(invoiceData);
       setStep("pay");
@@ -159,7 +160,7 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                 </span>
               </DialogTitle>
               <DialogDescription>
-                Support this project with some sats
+                Support this project with a Bitcoin Lightning donation
               </DialogDescription>
             </DialogHeader>
             <div className="py-4">
@@ -183,7 +184,7 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
               <Button
                 onClick={handleProceedToPayment}
                 disabled={isLoading || (!amount && !customAmount) || !!error}
-                className="w-full bg-orange-500 hover:bg-orange-600"
+                className="w-full bg-orange-500 hover:bg-orange-600 dark:text-white dark:bg-[#121f38] dark:hover:bg-[#1a2942] dark:border dark:border-gray-700"
               >
                 Zap {customAmount || amount} sats
               </Button>
@@ -205,7 +206,11 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
               error={error}
             />
             <DialogFooter>
-              <Button variant="outline" onClick={handleClose}>
+              <Button 
+                variant="outline" 
+                onClick={handleClose}
+                className="dark:bg-[#121f38] dark:hover:bg-[#1a2942] dark:border dark:border-gray-700"
+              >
                 Cancel
               </Button>
             </DialogFooter>
@@ -221,7 +226,12 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
             </DialogHeader>
             <ThankYouView />
             <DialogFooter>
-              <Button onClick={handleClose}>Close</Button>
+              <Button 
+                onClick={handleClose}
+                className="dark:bg-[#121f38] dark:hover:bg-[#1a2942] dark:border dark:border-gray-700"
+              >
+                Close
+              </Button>
             </DialogFooter>
           </>
         )}

@@ -1,5 +1,7 @@
+
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
+import { Share, Menu, Plus, SquarePlus, Smartphone, Home } from "lucide-react";
 
 const LANGS = [
   { code: "en", label: "English" },
@@ -18,17 +20,17 @@ const CONTENT = {
     install: {
       ios: [
         { step: "Open this site in Safari.", icon: "menu" },
-        { step: "Tap the Share icon.", icon: "square-plus" },
+        { step: "Tap the Share icon.", icon: "share" },
         { step: "Choose \"Add to Home Screen.\"", icon: "plus" },
-        { step: "Tap Add.", icon: "" },
-        { step: "The app is now on your home screen!", icon: "" },
+        { step: "Tap Add.", icon: "plus" },
+        { step: "The app is now on your home screen! Open it from there to get the full PWA experience.", icon: "home" },
       ],
       android: [
         { step: "Open in Chrome or Firefox.", icon: "menu" },
         { step: "Tap the browser menu (⋮ or ≡).", icon: "menu" },
-        { step: "Select \"Add to Home screen.\"", icon: "square-plus" },
+        { step: "Select \"Add to Home screen.\"", icon: "plus" },
         { step: "Confirm to install.", icon: "plus" },
-        { step: "The app launches from your home screen!", icon: "" },
+        { step: "The app is now on your home screen! Open it from there to get the full PWA experience.", icon: "home" },
       ],
     },
     why: [
@@ -58,17 +60,17 @@ const CONTENT = {
     install: {
       ios: [
         { step: "Diese Seite in Safari öffnen.", icon: "menu" },
-        { step: "Teilen-Symbol antippen.", icon: "square-plus" },
+        { step: "Teilen-Symbol antippen.", icon: "share" },
         { step: "\"Zum Home-Bildschirm hinzufügen\" wählen.", icon: "plus" },
-        { step: "Auf \"Hinzufügen\" tippen.", icon: "" },
-        { step: "Die App erscheint auf deinem Startbildschirm!", icon: "" },
+        { step: "Auf \"Hinzufügen\" tippen.", icon: "plus" },
+        { step: "Die App erscheint auf deinem Startbildschirm! Öffne sie von dort für die volle PWA-Erfahrung.", icon: "home" },
       ],
       android: [
         { step: "Im Chrome oder Firefox öffnen.", icon: "menu" },
         { step: "Browsermenü (⋮ oder ≡) antippen.", icon: "menu" },
-        { step: "\"Zum Startbildschirm hinzufügen\" wählen.", icon: "square-plus" },
+        { step: "\"Zum Startbildschirm hinzufügen\" wählen.", icon: "plus" },
         { step: "Hinzufügen bestätigen.", icon: "plus" },
-        { step: "Jetzt startet die App vom Startbildschirm!", icon: "" },
+        { step: "Jetzt startet die App vom Startbildschirm! Öffne sie von dort für die volle PWA-Erfahrung.", icon: "home" },
       ],
     },
     why: [
@@ -98,17 +100,17 @@ const CONTENT = {
     install: {
       ios: [
         { step: "Abre este sitio en Safari.", icon: "menu" },
-        { step: "Toca el ícono de Compartir.", icon: "square-plus" },
+        { step: "Toca el ícono de Compartir.", icon: "share" },
         { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "plus" },
-        { step: "Toca Añadir.", icon: "" },
-        { step: "¡Ya tienes la app en tu pantalla de inicio!", icon: "" },
+        { step: "Toca Añadir.", icon: "plus" },
+        { step: "¡Ya tienes la app en tu pantalla de inicio! Ábrela desde allí para obtener la experiencia PWA completa.", icon: "home" },
       ],
       android: [
         { step: "Abre en Chrome o Firefox.", icon: "menu" },
         { step: "Toca el menú del navegador (⋮ o ≡).", icon: "menu" },
-        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "square-plus" },
+        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "plus" },
         { step: "Confirma para instalar.", icon: "plus" },
-        { step: "¡Ya puedes abrirlo desde tu pantalla de inicio!", icon: "" },
+        { step: "¡Ya puedes abrirlo desde tu pantalla de inicio! Ábrela desde allí para obtener la experiencia PWA completa.", icon: "home" },
       ],
     },
     why: [
@@ -128,24 +130,6 @@ const CONTENT = {
     developerName: "Neo",
     developerDescription: "desarrollador de apps libres.",
   },
-};
-
-const ICONS = {
-  menu: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-purple-400 dark:fill-purple-300" viewBox="0 0 24 24">
-      <rect x="3" y="6" width="18" height="2" rx="1" /><rect x="3" y="11" width="18" height="2" rx="1" /><rect x="3" y="16" width="18" height="2" rx="1" />
-    </svg>
-  ),
-  plus: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-green-400 dark:fill-green-300" viewBox="0 0 24 24">
-      <rect x="11" y="4" width="2" height="16" rx="1"/><rect x="4" y="11" width="16" height="2" rx="1" />
-    </svg>
-  ),
-  "square-plus": (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
-      <rect x="5" y="5" width="14" height="14" rx="2"/><rect x="11" y="8" width="2" height="8" rx="1"/><rect x="8" y="11" width="8" height="2" rx="1"/>
-    </svg>
-  ),
 };
 
 function classNames(...cls) {
@@ -173,6 +157,15 @@ export default function Index() {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
+
+  // Updated ICONS with Lucide React icons
+  const ICONS = {
+    menu: <Menu className="w-5 h-5 inline align-text-bottom mr-1 text-purple-400 dark:text-purple-300" />,
+    plus: <Plus className="w-5 h-5 inline align-text-bottom mr-1 text-green-400 dark:text-green-300" />,
+    "square-plus": <SquarePlus className="w-5 h-5 inline align-text-bottom mr-1 text-blue-400 dark:text-blue-300" />,
+    share: <Share className="w-5 h-5 inline align-text-bottom mr-1 text-blue-400 dark:text-blue-300" />,
+    home: <Home className="w-5 h-5 inline align-text-bottom mr-1 text-purple-400 dark:text-purple-300" />,
+  };
 
   return (
     <>
@@ -267,7 +260,7 @@ export default function Index() {
               <div className="flex-1 bg-white/70 dark:bg-[#22235b60] rounded-lg p-4 pb-3 shadow-sm">
                 <h3 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
                   <span className="inline-block w-7 h-7 bg-gray-100 dark:bg-[#2b2e3d] rounded mr-2 flex items-center justify-center font-bold text-purple-500 dark:text-purple-300 text-lg">
-                    
+                    <Smartphone className="w-4 h-4" />
                   </span>
                   iOS (Safari)
                 </h3>
@@ -283,9 +276,7 @@ export default function Index() {
               <div className="flex-1 bg-white/70 dark:bg-[#15302660] rounded-lg p-4 pb-3 shadow-sm">
                 <h3 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
                   <span className="inline-block w-7 h-7 bg-green-100 dark:bg-green-800 rounded mr-2 flex items-center justify-center font-bold text-green-500 dark:text-green-200 text-lg">
-                    <svg viewBox="1 1 22 22" className="w-4 h-4">
-                      <circle cx="12" cy="12" r="9" fill="#00e17e"></circle>
-                    </svg>
+                    <Smartphone className="w-4 h-4" />
                   </span>
                   Android (Chrome/Firefox)
                 </h3>
@@ -343,16 +334,16 @@ export default function Index() {
           <DonationButton />
         </div>
         <div>
-          Built by{" "}
+          {CONTENT[lang].builtBy}{" "}
           <a 
             href="https://github.com/neonostr" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Neo
+            {CONTENT[lang].developerName}
           </a>
-          , freedom‑first app developer.
+          , {CONTENT[lang].developerDescription}
         </div>
       </footer>
     </>

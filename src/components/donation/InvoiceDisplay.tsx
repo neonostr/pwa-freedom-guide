@@ -31,7 +31,7 @@ const InvoiceDisplay: React.FC<InvoiceDisplayProps> = ({ invoice, amount, isLoad
 
   return (
     <div className="py-4 flex flex-col items-center">
-      <div className="bg-white p-4 rounded-lg mb-4">
+      <div className="p-4 rounded-lg mb-4 bg-white">
         <QRCode data={invoice.pr} size={200} />
       </div>
       <div className="mt-2 w-full">
@@ -45,7 +45,7 @@ const InvoiceDisplay: React.FC<InvoiceDisplayProps> = ({ invoice, amount, isLoad
           <Button
             variant="ghost"
             size="sm"
-            className="absolute right-1 top-1/2 transform -translate-y-1/2"
+            className="absolute right-1 top-1/2 transform -translate-y-1/2 dark:text-gray-300"
             onClick={copyInvoiceToClipboard}
           >
             Copy

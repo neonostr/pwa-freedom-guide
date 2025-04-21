@@ -24,30 +24,37 @@ const AmountSelector: React.FC<AmountSelectorProps> = ({
 
   return (
     <div>
-      <div className="mb-6">
-        <label className="block text-lg font-medium text-center mb-2">Amount (sats)</label>
-        <input
-          type="text"
-          value={customAmount || amount}
-          onChange={handleCustomAmountChange}
-          className="w-full p-3 text-center text-xl border rounded-md dark:bg-gray-800 dark:border-gray-700"
-          placeholder="Enter amount"
-        />
-      </div>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 gap-3">
         {presetAmounts.map(presetAmount => (
           <Button
             key={presetAmount}
-            variant={amount === presetAmount && !customAmount ? "default" : "outline"}
+            variant="outline"
             onClick={() => {
               setAmount(presetAmount);
               setCustomAmount("");
             }}
-            className={`w-full ${amount === presetAmount && !customAmount ? 'bg-orange-500 hover:bg-orange-600' : ''}`}
+            className={`w-full ${
+              amount === presetAmount && !customAmount 
+                ? 'bg-[#0f172a] text-white dark:bg-[#121f38] dark:text-white dark:border dark:border-gray-700'
+                : 'border-gray-200 dark:border-gray-700 dark:bg-[#1a1f2c] dark:text-gray-200'
+            }`}
           >
-            {presetAmount.toLocaleString()}
+            {presetAmount.toLocaleString()} sats
           </Button>
         ))}
+      </div>
+      
+      <div className="mt-6">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Custom amount (sats)
+        </label>
+        <input
+          type="text"
+          value={customAmount}
+          onChange={handleCustomAmountChange}
+          className="w-full p-3 text-center text-lg border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-[#1a1f2c] dark:border-gray-700 dark:text-gray-200"
+          placeholder="Enter custom amount"
+        />
       </div>
     </div>
   );
