@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
 
@@ -60,14 +59,14 @@ const CONTENT = {
       ios: [
         { step: "Diese Seite in Safari öffnen.", icon: "menu" },
         { step: "Teilen-Symbol antippen.", icon: "square-plus" },
-        { step: "„Zum Home-Bildschirm hinzufügen" wählen.", icon: "plus" },
-        { step: "Auf „Hinzufügen" tippen.", icon: "" },
+        { step: "\"Zum Home-Bildschirm hinzufügen\" wählen.", icon: "plus" },
+        { step: "Auf \"Hinzufügen\" tippen.", icon: "" },
         { step: "Die App erscheint auf deinem Startbildschirm!", icon: "" },
       ],
       android: [
         { step: "Im Chrome oder Firefox öffnen.", icon: "menu" },
         { step: "Browsermenü (⋮ oder ≡) antippen.", icon: "menu" },
-        { step: "„Zum Startbildschirm hinzufügen" wählen.", icon: "square-plus" },
+        { step: "\"Zum Startbildschirm hinzufügen\" wählen.", icon: "square-plus" },
         { step: "Hinzufügen bestätigen.", icon: "plus" },
         { step: "Jetzt startet die App vom Startbildschirm!", icon: "" },
       ],
@@ -157,7 +156,6 @@ export default function Index() {
   const [lang, setLang] = useState("en");
   const [dark, setDark] = useState(false);
 
-  // Smoothly scrolls to current language's PWA section
   const sectionRefs = {
     en: useRef<HTMLDivElement>(null),
     de: useRef<HTMLDivElement>(null),
@@ -165,11 +163,9 @@ export default function Index() {
   };
 
   useEffect(() => {
-    // Set dark class on <html>
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
-  // Anchor scroll: when clicking #pwa-link, scroll to correct language section
   function handleAnchor(e) {
     e.preventDefault();
     const ref = sectionRefs[lang];
@@ -192,7 +188,6 @@ export default function Index() {
             What is a PWA?
           </a>
           <div className="flex gap-4 items-center mt-4 md:mt-0">
-            {/* Language Switcher Tabs */}
             <div className="flex gap-1 rounded-lg bg-gray-100 dark:bg-[#282841] p-1 border border-gray-200 dark:border-gray-700">
               {LANGS.map((l) => (
                 <button
@@ -210,7 +205,6 @@ export default function Index() {
                 </button>
               ))}
             </div>
-            {/* Light/Dark Toggle Button */}
             <button
               aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
               onClick={() => setDark(!dark)}
@@ -251,7 +245,6 @@ export default function Index() {
           tabIndex={-1}
           className="max-w-2xl w-full space-y-10 mx-auto"
         >
-          {/* Only active language visible */}
           <div>
             <h1 className="text-3xl font-extrabold text-purple-700 dark:text-purple-300 mb-3">
               {CONTENT[lang].title}
