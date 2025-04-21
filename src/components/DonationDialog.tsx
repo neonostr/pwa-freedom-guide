@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-// Use only the allowed icons from lucide-react!
-import { BadgeDollarSign } from "lucide-react";
+import { Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -71,6 +70,16 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
   const handleProceedToPayment = async () => {
     if (!lnurlData) return;
     const finalAmount = customAmount ? parseInt(customAmount) : amount;
+    
+    // Validate amount
+    if (!finalAmount) {
+      toast({
+        description: "Please enter a valid amount",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     // Validate min/max
     if (finalAmount < lnurlData.minSendable / 1000 || finalAmount > lnurlData.maxSendable / 1000) {
       toast({
@@ -79,11 +88,14 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
       });
       return;
     }
+    
     setIsLoading(true);
     try {
       const invoiceData = await generateInvoice(finalAmount, lnurlData);
+      console.log("Invoice generated:", invoiceData);
       setInvoice(invoiceData);
       setStep("pay");
+      
       // Poll payment status
       const intervalId = setInterval(() => {
         if (invoiceData.verify) {
@@ -96,13 +108,16 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
             .catch(err => console.error("Payment status check error:", err));
         }
       }, POLLING_INTERVAL);
+      
       setTimerId(intervalId);
+      
       // Set timeout after 5min
       const timeout = setTimeout(() => {
         clearInterval(intervalId);
         setError("Payment timeout. Please try again.");
         setStep("select");
       }, TIMEOUT_DURATION);
+      
       setTimeoutId(timeout);
     } catch (err) {
       setError("Failed to generate invoice. Please try again.");
@@ -155,18 +170,18 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] dark:bg-[#0f172a]">
         {step === "select" && (
           <>
             <DialogHeader>
               <DialogTitle>
                 <span className="flex items-center gap-2">
-                  <BadgeDollarSign className="w-5 h-5 text-yellow-400" />
+                  <Coffee className="h-5 w-5 text-orange-400" />
                   Zap me a coffee
                 </span>
               </DialogTitle>
               <DialogDescription>
-                Support this project with a Bitcoin Lightning donation
+                Support this project with some sats
               </DialogDescription>
             </DialogHeader>
             <div className="py-4">
@@ -178,7 +193,17 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                 <div className="text-red-500 text-center">{error}</div>
               ) : (
                 <>
-                  <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="mb-6">
+                    <label className="block text-lg font-medium text-center mb-2">Amount (sats)</label>
+                    <input
+                      type="text"
+                      value={customAmount || amount}
+                      onChange={handleCustomAmountChange}
+                      className="w-full p-3 text-center text-xl border rounded-md dark:bg-gray-800 dark:border-gray-700"
+                      placeholder="Enter amount"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 gap-2 mb-4">
                     {PRESET_AMOUNTS.map(presetAmount => (
                       <Button
                         key={presetAmount}
@@ -187,22 +212,11 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                           setAmount(presetAmount);
                           setCustomAmount("");
                         }}
-                        className="w-full"
+                        className={`w-full ${amount === presetAmount && !customAmount ? 'bg-orange-500 hover:bg-orange-600' : ''}`}
                       >
-                        {presetAmount.toLocaleString()} sats
+                        {presetAmount.toLocaleString()}
                       </Button>
                     ))}
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Custom amount (sats)</label>
-                    <input
-                      type="text"
-                      value={customAmount}
-                      onChange={handleCustomAmountChange}
-                      onFocus={() => setAmount(0)}
-                      className="w-full p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700"
-                      placeholder="Enter custom amount"
-                    />
                   </div>
                 </>
               )}
@@ -211,8 +225,9 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
               <Button
                 onClick={handleProceedToPayment}
                 disabled={isLoading || (!amount && !customAmount) || !!error}
+                className="w-full bg-orange-500 hover:bg-orange-600"
               >
-                Continue
+                Zap {customAmount || amount} sats
               </Button>
             </DialogFooter>
           </>
@@ -222,12 +237,14 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
             <DialogHeader>
               <DialogTitle>Scan to pay</DialogTitle>
               <DialogDescription>
-                {`Pay ${customAmount || amount} sats to support this project`}
+                Pay {customAmount || amount} sats to support this project
               </DialogDescription>
             </DialogHeader>
             <div className="py-4 flex flex-col items-center">
-              <QRCode data={invoice.pr} size={200} />
-              <div className="mt-4 w-full">
+              <div className="bg-white p-4 rounded-lg mb-4">
+                <QRCode data={invoice.pr} size={200} />
+              </div>
+              <div className="mt-2 w-full">
                 <div className="relative">
                   <input
                     type="text"

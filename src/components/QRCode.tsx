@@ -13,15 +13,17 @@ const QRCode: React.FC<QRCodeProps> = ({ data, size = 200 }) => {
   useEffect(() => {
     if (!data || !canvasRef.current) return;
 
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    
     QRCodeLib.toCanvas(canvasRef.current, data, {
       width: size,
       margin: 1,
       color: {
-        dark: document.documentElement.classList.contains("dark") ? "#ffffff" : "#000000",
+        dark: isDarkMode ? "#ffffff" : "#000000",
         light: "transparent",
       },
     }).catch(err => console.error("Error generating QR code:", err));
-  }, [data, size, document.documentElement.classList.contains("dark")]);
+  }, [data, size]);
 
   return (
     <div className="flex justify-center">
