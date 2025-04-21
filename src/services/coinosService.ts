@@ -1,9 +1,10 @@
+
 /**
  * Service for Coinos LNURL donation.
  *
- * Uses username: "pwa"
+ * Uses username: "neo21"
  */
-const COINOS_USERNAME = "pwa"; // updated from "neo21" to "pwa"
+const COINOS_USERNAME = "neo21"; // update here if you want another username
 
 export interface LnurlResponse {
   callback: string;
@@ -43,3 +44,4 @@ export async function checkPaymentStatus(verifyUrl: string): Promise<{ settled: 
   if (!res.ok) throw new Error("Unable to check payment status.");
   return await res.json();
 }
+

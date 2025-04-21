@@ -1,8 +1,8 @@
 
 import React, { useState } from "react";
-import { Coffee } from "lucide-react";
+import { BadgeDollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import DonationDialog from "@/components/donation/DonationDialog";
+import DonationDialog from "@/components/DonationDialog";
 
 const DonationButton: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -15,7 +15,7 @@ const DonationButton: React.FC = () => {
         className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 border-blue-300 dark:border-blue-700"
         onClick={() => setIsDialogOpen(true)}
       >
-        <Coffee className="h-4 w-4" />
+        <BadgeDollarSign className="h-4 w-4" />
         <span>Zap me a coffee</span>
       </Button>
       <DonationDialog 
