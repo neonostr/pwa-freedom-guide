@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import DonationDialog from "@/components/DonationDialog";
+import DonationDialog from "@/components/donation/DonationDialog";
 
 const DonationButton: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);

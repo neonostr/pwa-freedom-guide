@@ -10,9 +10,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import QRCode from "@/components/QRCode";
 import { fetchLnurlData, generateInvoice, checkPaymentStatus, LnurlResponse, InvoiceResponse } from "@/services/coinosService";
 import { toast } from "@/hooks/use-toast";
+import AmountSelector from "@/components/donation/AmountSelector";
+import InvoiceDisplay from "@/components/donation/InvoiceDisplay";
+import ThankYouView from "@/components/donation/ThankYouView";
 
 interface DonationDialogProps {
   isOpen: boolean;
@@ -59,12 +61,6 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, step]);
-
-  // Custom amount only accept numeric vals
-  const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^0-9]/g, "");
-    setCustomAmount(value);
-  };
 
   // User selects to proceed to pay
   const handleProceedToPayment = async () => {
@@ -150,24 +146,6 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  // Copy invoice to clipboard
-  const copyInvoiceToClipboard = () => {
-    if (!invoice) return;
-    navigator.clipboard.writeText(invoice.pr)
-      .then(() => {
-        toast({
-          description: "Invoice copied to clipboard",
-        });
-      })
-      .catch(err => {
-        console.error("Failed to copy:", err);
-        toast({
-          description: "Failed to copy. Please copy manually.",
-          variant: "destructive",
-        });
-      });
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[425px] dark:bg-[#0f172a]">
@@ -192,33 +170,13 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
               ) : error ? (
                 <div className="text-red-500 text-center">{error}</div>
               ) : (
-                <>
-                  <div className="mb-6">
-                    <label className="block text-lg font-medium text-center mb-2">Amount (sats)</label>
-                    <input
-                      type="text"
-                      value={customAmount || amount}
-                      onChange={handleCustomAmountChange}
-                      className="w-full p-3 text-center text-xl border rounded-md dark:bg-gray-800 dark:border-gray-700"
-                      placeholder="Enter amount"
-                    />
-                  </div>
-                  <div className="grid grid-cols-4 gap-2">
-                    {PRESET_AMOUNTS.map(presetAmount => (
-                      <Button
-                        key={presetAmount}
-                        variant={amount === presetAmount && !customAmount ? "default" : "outline"}
-                        onClick={() => {
-                          setAmount(presetAmount);
-                          setCustomAmount("");
-                        }}
-                        className={`w-full ${amount === presetAmount && !customAmount ? 'bg-orange-500 hover:bg-orange-600' : ''}`}
-                      >
-                        {presetAmount.toLocaleString()}
-                      </Button>
-                    ))}
-                  </div>
-                </>
+                <AmountSelector 
+                  amount={amount}
+                  customAmount={customAmount}
+                  setAmount={setAmount}
+                  setCustomAmount={setCustomAmount}
+                  presetAmounts={PRESET_AMOUNTS}
+                />
               )}
             </div>
             <DialogFooter>
@@ -240,36 +198,12 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                 Pay {customAmount || amount} sats to support this project
               </DialogDescription>
             </DialogHeader>
-            <div className="py-4 flex flex-col items-center">
-              <div className="bg-white p-4 rounded-lg mb-4">
-                <QRCode data={invoice.pr} size={200} />
-              </div>
-              <div className="mt-2 w-full">
-                <div className="relative">
-                  <input
-                    type="text"
-                    readOnly
-                    value={invoice.pr}
-                    className="w-full p-2 pr-10 border rounded-md bg-gray-100 dark:bg-gray-800 dark:border-gray-700 text-xs overflow-hidden text-ellipsis"
-                  />
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-1 top-1/2 transform -translate-y-1/2"
-                    onClick={copyInvoiceToClipboard}
-                  >
-                    Copy
-                  </Button>
-                </div>
-              </div>
-              {isLoading && (
-                <div className="mt-4 flex items-center">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-500 mr-2"></div>
-                  <span>Waiting for payment...</span>
-                </div>
-              )}
-              {error && <div className="mt-4 text-red-500">{error}</div>}
-            </div>
+            <InvoiceDisplay 
+              invoice={invoice}
+              amount={customAmount || amount}
+              isLoading={isLoading}
+              error={error}
+            />
             <DialogFooter>
               <Button variant="outline" onClick={handleClose}>
                 Cancel
@@ -285,13 +219,7 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
                 Your support is greatly appreciated
               </DialogDescription>
             </DialogHeader>
-            <div className="py-8 text-center">
-              <div className="mb-4 text-5xl">✨</div>
-              <p className="text-lg">Thank you for your generous donation!</p>
-              <p className="mt-2 text-gray-500 dark:text-gray-400">
-                Your support helps keep this project going.
-              </p>
-            </div>
+            <ThankYouView />
             <DialogFooter>
               <Button onClick={handleClose}>Close</Button>
             </DialogFooter>
