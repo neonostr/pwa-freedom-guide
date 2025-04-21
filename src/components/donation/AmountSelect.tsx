@@ -52,8 +52,8 @@ const AmountSelect: React.FC<AmountSelectProps> = ({
                 value={customAmount}
                 onChange={(e) => onCustomAmountChange(e.target.value.replace(/[^0-9]/g, ""))}
                 onFocus={() => onAmountSelect(0)}
+                placeholder={`Enter custom amount (${amount} sats)`}
                 className="w-full p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700"
-                placeholder="Enter custom amount"
               />
             </div>
             <div className="grid grid-cols-2 gap-2 mb-4">
