@@ -10,7 +10,7 @@ const LANGS = [
 const ICONS = {
   menu: (
     <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M3 12h18M3 6h18M3 18h18" />
+      <path d="M4 6h16M4 12h16m-7 6h7" />
     </svg>
   ),
   plus: (
@@ -21,6 +21,7 @@ const ICONS = {
   home: (
     <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <path d="M9 22V12h6v10" />
     </svg>
   ),
   share: (
@@ -31,17 +32,17 @@ const ICONS = {
     </svg>
   ),
   safari: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 2v2M12 20v2M2 12h2M20 12h2" />
-      <path d="M12 12L19 5M12 12L5 19" />
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="#0066CC" />
+      <path d="M12 2v20M2 12h20" stroke="white" strokeWidth="1" />
+      <path d="M12 12L19 5M12 12L5 19" stroke="white" strokeWidth="1" />
     </svg>
   ),
   chrome: (
     <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="10" fill="#4285F4" />
       <circle cx="12" cy="12" r="4" fill="#FFFFFF" />
-      <path d="M12 8v8M8 12h8" stroke="#FFFFFF" strokeWidth="2" />
+      <path d="M12 8v8M8 12h8" stroke="#DB4437" strokeWidth="2" />
     </svg>
   ),
 };
@@ -50,119 +51,128 @@ const CONTENT = {
   en: {
     title: "What is a PWA?",
     what: [
-      "A Progressive Web App (PWA) is a website that works like a native app on your device.",
-      "PWAs run entirely in your browser, but you can install them to your home screen and use them offline.",
-      "They don't require visiting an app store—just install from your browser for a fast, native-like experience.",
+      "A Progressive Web App (PWA) is fast, private, and free from app stores.",
+      "PWAs combine the best features of websites and native apps. They run entirely in your browser, offering enhanced privacy, automatic updates, and freedom from app-store censorship.",
     ],
     install: {
       ios: [
-        { step: "Open this site in Safari.", icon: "safari" },
+        { step: "Open the site in Safari.", icon: "safari" },
         { step: "Tap the Share icon.", icon: "share" },
         { step: "Choose \"Add to Home Screen.\"", icon: "plus" },
-        { step: "Tap Add.", icon: "" },
-        { step: "Launch the app from your home screen for the best experience!", icon: "" },
+        { step: "Tap Add.", icon: "plus" },
+        { step: "The app is now on your home screen! Open it from there to get the full PWA experience.", icon: "home" },
       ],
       android: [
         { step: "Open in Chrome or Firefox.", icon: "chrome" },
         { step: "Tap the browser menu (⋮ or ≡).", icon: "menu" },
         { step: "Select \"Add to Home screen.\"", icon: "home" },
         { step: "Confirm to install.", icon: "plus" },
-        { step: "Launch the app from your home screen for the full app experience!", icon: "" },
+        { step: "The app is now on your home screen! Open it from there to get the full PWA experience.", icon: "home" },
       ],
     },
+    whyTitle: "Why PWAs Are Awesome",
     why: [
-      "PWAs give you privacy—your data stays on your device.",
-      "They're fast and lightweight for better performance.",
-      "No need for Apple or Google app stores: install freely from any browser.",
-      "No gatekeepers or censorship: what you use is your choice.",
+      "**Privacy-Focused:** Runs securely within your browser sandbox; no invasive tracking or spying from big app stores.",
+      "**No App Stores, No Restrictions:** Installs directly from your browser, bypassing corporate gatekeepers and censorship.",
+      "**Instant & Automatic Updates:** Always up-to-date, without notifications or manual updates.",
+      "**Super Fast:** Loads instantly with no need for bulky app downloads.",
+      "**Universal & Accessible:** Works seamlessly on any device—phones, tablets, and desktops alike.",
     ],
-    otherAppsTitle: "Example PWA Projects",
+    otherAppsTitle: "Check out the live examples below and experience PWAs for yourself.",
     apps: [
-      { name: "Convy", url: "https://convy.click", description: "Privacy-first Bitcoin price tracker" },
-      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Open-source Bitcoin ecash wallet" },
+      { name: "Convy", url: "https://convy.click", description: "Privacy‑first Bitcoin currency converter" },
+      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Free Bitcoin ecash wallet" },
       { name: "Coinos", url: "https://coinos.io", description: "Free Bitcoin web wallet & payments" },
     ],
     builtBy: "Built by",
-    developerName: "Neo",
-    developerDescription: "freedom‑first app developer.",
+    developerName: "PWA enthusiasts",
+    developerDescription: "for a free and open web.",
+    donateButton: "Zap me a coffee",
+    thankyou: "Thank you for your support!"
   },
   de: {
     title: "Was ist eine PWA?",
     what: [
-      "Eine Progressive Web App (PWA) ist eine Website, die sich wie eine native App auf deinem Gerät verhält.",
-      "PWAs laufen vollständig im Browser, können aber wie Apps installiert und offline genutzt werden.",
-      "Kein App Store nötig—einfach im Browser installieren und loslegen!",
+      "Eine Progressive Web App (PWA) ist schnell, privat und frei von App Stores.",
+      "PWAs verbinden die besten Funktionen von Websites und nativen Apps. Sie laufen vollständig in Ihrem Browser und bieten verbesserte Privatsphäre, automatische Updates und Freiheit von App-Store-Zensur.",
     ],
     install: {
       ios: [
-        { step: "Diese Seite in Safari öffnen.", icon: "safari" },
-        { step: "Teilen-Symbol antippen.", icon: "share" },
-        { step: "\"Zum Home-Bildschirm hinzufügen\" wählen.", icon: "plus" },
-        { step: "Auf \"Hinzufügen\" tippen.", icon: "" },
-        { step: "Starte die App vom Startbildschirm für das beste Erlebnis!", icon: "" },
+        { step: "Öffnen Sie die Seite in Safari.", icon: "safari" },
+        { step: "Tippen Sie auf das Teilen-Symbol.", icon: "share" },
+        { step: "Wählen Sie \"Zum Home-Bildschirm hinzufügen\".", icon: "plus" },
+        { step: "Tippen Sie auf Hinzufügen.", icon: "plus" },
+        { step: "Die App ist jetzt auf Ihrem Startbildschirm! Öffnen Sie sie von dort für die volle PWA-Erfahrung.", icon: "home" },
       ],
       android: [
-        { step: "Im Chrome oder Firefox öffnen.", icon: "chrome" },
-        { step: "Browsermenü (⋮ oder ≡) antippen.", icon: "menu" },
-        { step: "\"Zum Startbildschirm hinzufügen\" wählen.", icon: "home" },
-        { step: "Hinzufügen bestätigen.", icon: "plus" },
-        { step: "Starte die App vom Startbildschirm für das volle App-Erlebnis!", icon: "" },
+        { step: "In Chrome oder Firefox öffnen.", icon: "chrome" },
+        { step: "Tippen Sie auf das Browser-Menü (⋮ oder ≡).", icon: "menu" },
+        { step: "Wählen Sie \"Zum Startbildschirm hinzufügen\".", icon: "home" },
+        { step: "Installation bestätigen.", icon: "plus" },
+        { step: "Die App ist jetzt auf Ihrem Startbildschirm! Öffnen Sie sie von dort für die volle PWA-Erfahrung.", icon: "home" },
       ],
     },
+    whyTitle: "Warum PWAs großartig sind",
     why: [
-      "PWAs bieten Privatsphäre – alle Daten bleiben auf deinem Gerät.",
-      "Sie sind schnell und ressourcensparend.",
-      "Keine Apple- oder Google-Store-Pflicht: installation direkt aus dem Browser.",
-      "Ohne Zensur oder Gatekeeper – du entscheidest, was du nutzt.",
+      "**Datenschutz im Fokus:** Läuft sicher in Ihrer Browser-Sandbox; keine invasive Verfolgung oder Spionage durch große App Stores.",
+      "**Keine App Stores, keine Einschränkungen:** Installation direkt aus Ihrem Browser, umgeht Unternehmens-Gatekeeper und Zensur.",
+      "**Sofortige & automatische Updates:** Immer auf dem neuesten Stand, ohne Benachrichtigungen oder manuelle Updates.",
+      "**Superschnell:** Lädt sofort ohne umfangreiche App-Downloads.",
+      "**Universal & zugänglich:** Funktioniert nahtlos auf allen Geräten—Handys, Tablets und Desktops.",
     ],
-    otherAppsTitle: "Beispiel PWA Projekte",
+    otherAppsTitle: "Entdecken Sie die Live-Beispiele unten und erleben Sie PWAs selbst.",
     apps: [
-      { name: "Convy", url: "https://convy.click", description: "Privatsphäre-fokussierter Bitcoin Preisverfolger" },
-      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Open-Source Bitcoin E-Cash Wallet" },
+      { name: "Convy", url: "https://convy.click", description: "Datenschutzorientierter Bitcoin-Währungsrechner" },
+      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Kostenlose Bitcoin E-Cash Wallet" },
       { name: "Coinos", url: "https://coinos.io", description: "Kostenlose Bitcoin Web-Wallet" },
     ],
     builtBy: "Erstellt von",
-    developerName: "Neo",
-    developerDescription: "Entwickler für freie Apps.",
+    developerName: "PWA-Enthusiasten",
+    developerDescription: "für ein freies und offenes Web.",
+    donateButton: "Spendiere einen Kaffee",
+    thankyou: "Vielen Dank für deine Unterstützung!"
   },
   es: {
     title: "¿Qué es una PWA?",
     what: [
-      "Una Aplicación Web Progresiva (PWA) es un sitio web que funciona como una app nativa en tu dispositivo.",
-      "Las PWAs se ejecutan en el navegador pero pueden instalarse en la pantalla de inicio y usarse sin conexión.",
-      "No necesitas tienda de apps: instálala directamente desde tu navegador para vivir una experiencia rápida.",
+      "Una Aplicación Web Progresiva (PWA) es rápida, privada y libre de tiendas de aplicaciones.",
+      "Las PWAs combinan las mejores características de los sitios web y las aplicaciones nativas. Se ejecutan completamente en su navegador, ofreciendo mayor privacidad, actualizaciones automáticas y libertad de la censura de las tiendas de aplicaciones.",
     ],
     install: {
       ios: [
-        { step: "Abre este sitio en Safari.", icon: "safari" },
-        { step: "Toca el ícono de Compartir.", icon: "share" },
-        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "plus" },
-        { step: "Toca Añadir.", icon: "" },
-        { step: "¡Abre la app desde tu pantalla de inicio para la mejor experiencia!", icon: "" },
+        { step: "Abra el sitio en Safari.", icon: "safari" },
+        { step: "Toque el ícono Compartir.", icon: "share" },
+        { step: "Elija \"Añadir a la pantalla de inicio\".", icon: "plus" },
+        { step: "Toque Añadir.", icon: "plus" },
+        { step: "¡La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.", icon: "home" },
       ],
       android: [
-        { step: "Abre en Chrome o Firefox.", icon: "chrome" },
-        { step: "Toca el menú del navegador (⋮ o ≡).", icon: "menu" },
-        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "home" },
-        { step: "Confirma para instalar.", icon: "plus" },
-        { step: "¡Abre desde tu pantalla de inicio para la experiencia completa de app!", icon: "" },
+        { step: "Abra en Chrome o Firefox.", icon: "chrome" },
+        { step: "Toque el menú del navegador (⋮ o ≡).", icon: "menu" },
+        { step: "Seleccione \"Añadir a la pantalla de inicio\".", icon: "home" },
+        { step: "Confirme la instalación.", icon: "plus" },
+        { step: "¡La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.", icon: "home" },
       ],
     },
+    whyTitle: "Por qué las PWAs son increíbles",
     why: [
-      "Las PWAs cuidan tu privacidad: tus datos permanecen en tu dispositivo.",
-      "Son rápidas y ligeras para un mejor rendimiento.",
-      "Sin depender de Apple o Google: instálala desde cualquier navegador.",
-      "Sin censura ni limitaciones: tú eliges qué usar.",
+      "**Enfocado en la privacidad:** Se ejecuta de forma segura dentro del sandbox de su navegador; sin rastreo invasivo ni espionaje de las grandes tiendas de aplicaciones.",
+      "**Sin tiendas de aplicaciones, sin restricciones:** Se instala directamente desde su navegador, evitando los guardianes corporativos y la censura.",
+      "**Actualizaciones instantáneas y automáticas:** Siempre actualizado, sin notificaciones ni actualizaciones manuales.",
+      "**Súper rápido:** Carga instantáneamente sin necesidad de descargas voluminosas.",
+      "**Universal y accesible:** Funciona perfectamente en cualquier dispositivo—teléfonos, tabletas y computadoras por igual.",
     ],
-    otherAppsTitle: "Otras Apps",
+    otherAppsTitle: "Explore los ejemplos en vivo a continuación y experimente las PWAs por sí mismo.",
     apps: [
-      { name: "Convy", url: "https://convy.click", description: "Rastreador de Bitcoin privado" },
-      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Billetera Bitcoin de código abierto" },
-      { name: "Coinos", url: "https://coinos.io", description: "Billetera web Bitcoin gratuita" },
+      { name: "Convy", url: "https://convy.click", description: "Conversor de Bitcoin enfocado en la privacidad" },
+      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Monedero Bitcoin E-cash gratuito" },
+      { name: "Coinos", url: "https://coinos.io", description: "Monedero web Bitcoin gratuito" },
     ],
     builtBy: "Creado por",
-    developerName: "Neo",
-    developerDescription: "desarrollador de apps libres.",
+    developerName: "entusiastas de PWA",
+    developerDescription: "para una web libre y abierta.",
+    donateButton: "Invítame un café",
+    thankyou: "¡Gracias por tu apoyo!"
   },
 };
 
