@@ -20,14 +20,14 @@ const CONTENT = {
       ios: [
         { step: "Open this site in Safari.", icon: "menu" },
         { step: "Tap the Share icon.", icon: "square-plus" },
-        { step: "Choose "Add to Home Screen."", icon: "plus" },
+        { step: "Choose \"Add to Home Screen.\"", icon: "plus" },
         { step: "Tap Add.", icon: "" },
         { step: "The app is now on your home screen!", icon: "" },
       ],
       android: [
         { step: "Open in Chrome or Firefox.", icon: "menu" },
         { step: "Tap the browser menu (⋮ or ≡).", icon: "menu" },
-        { step: "Select "Add to Home screen."", icon: "square-plus" },
+        { step: "Select \"Add to Home screen.\"", icon: "square-plus" },
         { step: "Confirm to install.", icon: "plus" },
         { step: "The app launches from your home screen!", icon: "" },
       ],
@@ -100,14 +100,14 @@ const CONTENT = {
       ios: [
         { step: "Abre este sitio en Safari.", icon: "menu" },
         { step: "Toca el ícono de Compartir.", icon: "square-plus" },
-        { step: "Selecciona «Agregar a pantalla de inicio».", icon: "plus" },
+        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "plus" },
         { step: "Toca Añadir.", icon: "" },
         { step: "¡Ya tienes la app en tu pantalla de inicio!", icon: "" },
       ],
       android: [
         { step: "Abre en Chrome o Firefox.", icon: "menu" },
         { step: "Toca el menú del navegador (⋮ o ≡).", icon: "menu" },
-        { step: "Selecciona «Agregar a pantalla de inicio».", icon: "square-plus" },
+        { step: "Selecciona \"Agregar a pantalla de inicio\".", icon: "square-plus" },
         { step: "Confirma para instalar.", icon: "plus" },
         { step: "¡Ya puedes abrirlo desde tu pantalla de inicio!", icon: "" },
       ],
