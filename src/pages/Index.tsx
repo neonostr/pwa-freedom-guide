@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
 
@@ -7,6 +6,45 @@ const LANGS = [
   { code: "de", label: "Deutsch" },
   { code: "es", label: "Español" },
 ];
+
+const ICONS = {
+  menu: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M3 12h18M3 6h18M3 18h18" />
+    </svg>
+  ),
+  plus: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+  ),
+  home: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    </svg>
+  ),
+  share: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+      <path d="M16 6l-4-4-4 4" />
+      <path d="M12 2v13" />
+    </svg>
+  ),
+  safari: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2" />
+      <path d="M12 12L19 5M12 12L5 19" />
+    </svg>
+  ),
+  chrome: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="#4285F4" />
+      <circle cx="12" cy="12" r="4" fill="#FFFFFF" />
+      <path d="M12 8v8M8 12h8" stroke="#FFFFFF" strokeWidth="2" />
+    </svg>
+  ),
+};
 
 const CONTENT = {
   en: {
@@ -38,12 +76,11 @@ const CONTENT = {
       "No need for Apple or Google app stores: install freely from any browser.",
       "No gatekeepers or censorship: what you use is your choice.",
     ],
-    otherAppsTitle: "Other Apps",
+    otherAppsTitle: "Example PWA Projects",
     apps: [
-      { name: "FreeWrite", url: "https://freewrite.app" },
-      { name: "OffGrid Tasks", url: "https://offgridtasks.com" },
-      { name: "OpenHabit", url: "https://openhabi.com" },
-      { name: "EphemerNote", url: "https://ephemernote.com" },
+      { name: "Convy", url: "https://convy.click", description: "Privacy-first Bitcoin price tracker" },
+      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Open-source Bitcoin ecash wallet" },
+      { name: "Coinos", url: "https://coinos.io", description: "Free Bitcoin web wallet & payments" },
     ],
     builtBy: "Built by",
     developerName: "Neo",
@@ -78,12 +115,11 @@ const CONTENT = {
       "Keine Apple- oder Google-Store-Pflicht: installation direkt aus dem Browser.",
       "Ohne Zensur oder Gatekeeper – du entscheidest, was du nutzt.",
     ],
-    otherAppsTitle: "Weitere Apps",
+    otherAppsTitle: "Beispiel PWA Projekte",
     apps: [
-      { name: "FreeWrite", url: "https://freewrite.app" },
-      { name: "OffGrid Tasks", url: "https://offgridtasks.com" },
-      { name: "OpenHabit", url: "https://openhabi.com" },
-      { name: "EphemerNote", url: "https://ephemernote.com" },
+      { name: "Convy", url: "https://convy.click", description: "Privatsphäre-fokussierter Bitcoin Preisverfolger" },
+      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Open-Source Bitcoin E-Cash Wallet" },
+      { name: "Coinos", url: "https://coinos.io", description: "Kostenlose Bitcoin Web-Wallet" },
     ],
     builtBy: "Erstellt von",
     developerName: "Neo",
@@ -120,62 +156,14 @@ const CONTENT = {
     ],
     otherAppsTitle: "Otras Apps",
     apps: [
-      { name: "FreeWrite", url: "https://freewrite.app" },
-      { name: "OffGrid Tasks", url: "https://offgridtasks.com" },
-      { name: "OpenHabit", url: "https://openhabi.com" },
-      { name: "EphemerNote", url: "https://ephemernote.com" },
+      { name: "Convy", url: "https://convy.click", description: "Rastreador de Bitcoin privado" },
+      { name: "Cashu.me", url: "https://wallet.cashu.me", description: "Billetera Bitcoin de código abierto" },
+      { name: "Coinos", url: "https://coinos.io", description: "Billetera web Bitcoin gratuita" },
     ],
     builtBy: "Creado por",
     developerName: "Neo",
     developerDescription: "desarrollador de apps libres.",
   },
-};
-
-const ICONS = {
-  menu: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-purple-400 dark:fill-purple-300" viewBox="0 0 24 24">
-      <rect x="3" y="6" width="18" height="2" rx="1" /><rect x="3" y="11" width="18" height="2" rx="1" /><rect x="3" y="16" width="18" height="2" rx="1" />
-    </svg>
-  ),
-  plus: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-green-400 dark:fill-green-300" viewBox="0 0 24 24">
-      <rect x="11" y="4" width="2" height="16" rx="1"/><rect x="4" y="11" width="16" height="2" rx="1" />
-    </svg>
-  ),
-  home: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
-      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
-  ),
-  share: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
-      <circle cx="18" cy="5" r="3" />
-      <circle cx="6" cy="12" r="3" />
-      <circle cx="18" cy="19" r="3" />
-      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-    </svg>
-  ),
-  safari: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1 fill-blue-400 dark:fill-blue-300" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="12" y1="2" x2="12" y2="22" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <path d="M16.24 7.76l-4.95 4.95m0 0l-3.53 3.53" />
-    </svg>
-  ),
-  chrome: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" fill="#4285F4" />
-      <circle cx="12" cy="12" r="4" fill="#FFFFFF" />
-      <path d="M12 8v8" stroke="#FFFFFF" strokeWidth="2" />
-      <path d="M8 12h8" stroke="#FFFFFF" strokeWidth="2" />
-      <path d="M12 12L7 5" stroke="#EA4335" strokeWidth="2" />
-      <path d="M12 12L19 10" stroke="#FBBC05" strokeWidth="2" />
-      <path d="M12 12L16 19" stroke="#34A853" strokeWidth="2" />
-    </svg>
-  ),
 };
 
 function classNames(...cls) {
