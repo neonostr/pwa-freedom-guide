@@ -1,5 +1,6 @@
 
 import { useState, useRef, useEffect } from "react";
+import DonationButton from "@/components/DonationButton";
 
 const LANGS = [
   { code: "en", label: "English" },
@@ -13,27 +14,27 @@ const CONTENT = {
     what: [
       "A Progressive Web App (PWA) is a website that works like a native app on your device.",
       "PWAs run entirely in your browser, but you can install them to your home screen and use them offline.",
-      "They don’t require visiting an app store—just install from your browser for a fast, native-like experience.",
+      "They don't require visiting an app store—just install from your browser for a fast, native-like experience.",
     ],
     install: {
       ios: [
         { step: "Open this site in Safari.", icon: "menu" },
         { step: "Tap the Share icon.", icon: "square-plus" },
-        { step: "Choose “Add to Home Screen.”", icon: "plus" },
+        { step: "Choose "Add to Home Screen."", icon: "plus" },
         { step: "Tap Add.", icon: "" },
         { step: "The app is now on your home screen!", icon: "" },
       ],
       android: [
         { step: "Open in Chrome or Firefox.", icon: "menu" },
         { step: "Tap the browser menu (⋮ or ≡).", icon: "menu" },
-        { step: "Select “Add to Home screen.”", icon: "square-plus" },
+        { step: "Select "Add to Home screen."", icon: "square-plus" },
         { step: "Confirm to install.", icon: "plus" },
         { step: "The app launches from your home screen!", icon: "" },
       ],
     },
     why: [
       "PWAs give you privacy—your data stays on your device.",
-      "They’re fast and lightweight for better performance.",
+      "They're fast and lightweight for better performance.",
       "No need for Apple or Google app stores: install freely from any browser.",
       "No gatekeepers or censorship: what you use is your choice.",
     ],
@@ -44,8 +45,9 @@ const CONTENT = {
       { name: "OpenHabit", url: "https://openhabi.com" },
       { name: "EphemerNote", url: "https://ephemernote.com" },
     ],
-    builtBy: "Built by Matt, freedom‑first app developer.",
-    copyright: "© 2025 All rights reserved.",
+    builtBy: "Built by",
+    developerName: "Neo",
+    developerDescription: "freedom‑first app developer.",
   },
   de: {
     title: "Was ist eine PWA?",
@@ -58,14 +60,14 @@ const CONTENT = {
       ios: [
         { step: "Diese Seite in Safari öffnen.", icon: "menu" },
         { step: "Teilen-Symbol antippen.", icon: "square-plus" },
-        { step: "„Zum Home-Bildschirm hinzufügen“ wählen.", icon: "plus" },
-        { step: "Auf „Hinzufügen“ tippen.", icon: "" },
+        { step: "„Zum Home-Bildschirm hinzufügen" wählen.", icon: "plus" },
+        { step: "Auf „Hinzufügen" tippen.", icon: "" },
         { step: "Die App erscheint auf deinem Startbildschirm!", icon: "" },
       ],
       android: [
         { step: "Im Chrome oder Firefox öffnen.", icon: "menu" },
         { step: "Browsermenü (⋮ oder ≡) antippen.", icon: "menu" },
-        { step: "„Zum Startbildschirm hinzufügen“ wählen.", icon: "square-plus" },
+        { step: "„Zum Startbildschirm hinzufügen" wählen.", icon: "square-plus" },
         { step: "Hinzufügen bestätigen.", icon: "plus" },
         { step: "Jetzt startet die App vom Startbildschirm!", icon: "" },
       ],
@@ -83,8 +85,9 @@ const CONTENT = {
       { name: "OpenHabit", url: "https://openhabi.com" },
       { name: "EphemerNote", url: "https://ephemernote.com" },
     ],
-    builtBy: "Erstellt von Matt, Entwickler für freie Apps.",
-    copyright: "© 2025 Alle Rechte vorbehalten.",
+    builtBy: "Erstellt von",
+    developerName: "Neo",
+    developerDescription: "Entwickler für freie Apps.",
   },
   es: {
     title: "¿Qué es una PWA?",
@@ -122,8 +125,9 @@ const CONTENT = {
       { name: "OpenHabit", url: "https://openhabi.com" },
       { name: "EphemerNote", url: "https://ephemernote.com" },
     ],
-    builtBy: "Creado por Matt, desarrollador de apps libres.",
-    copyright: "© 2025 Todos los derechos reservados.",
+    builtBy: "Creado por",
+    developerName: "Neo",
+    developerDescription: "desarrollador de apps libres.",
   },
 };
 
@@ -270,7 +274,7 @@ export default function Index() {
               <div className="flex-1 bg-white/70 dark:bg-[#22235b60] rounded-lg p-4 pb-3 shadow-sm">
                 <h3 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
                   <span className="inline-block w-7 h-7 bg-gray-100 dark:bg-[#2b2e3d] rounded mr-2 flex items-center justify-center font-bold text-purple-500 dark:text-purple-300 text-lg">
-                    
+                    
                   </span>
                   iOS (Safari)
                 </h3>
@@ -342,8 +346,20 @@ export default function Index() {
       </aside>
 
       <footer className="text-center py-6 text-gray-500 dark:text-gray-400 w-full">
-        <div className="mb-1">{CONTENT[lang].copyright}</div>
-        <div>{CONTENT[lang].builtBy}</div>
+        <div className="mb-4 flex justify-center">
+          <DonationButton />
+        </div>
+        <div>
+          {CONTENT[lang].builtBy}{" "}
+          <a 
+            href="https://github.com/neonostr" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            {CONTENT[lang].developerName}
+          </a>, {CONTENT[lang].developerDescription}
+        </div>
       </footer>
     </>
   );
