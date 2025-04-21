@@ -1,4 +1,4 @@
-import { Apple, Chrome, Safari } from "lucide-react";
+import { Apple, Chrome } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
 
@@ -79,11 +79,11 @@ const CONTENT = {
     },
     whyTitle: "Why PWAs Are Awesome",
     why: [
-      "<b>Privacy-Focused</b>: Runs securely within your browser sandbox; no invasive tracking or spying from big app stores.",
-      "<b>No App Stores, No Restrictions</b>: Installs directly from your browser, bypassing corporate gatekeepers and censorship.",
-      "<b>Instant & Automatic Updates</b>: Always up-to-date, without notifications or manual updates.",
-      "<b>Super Fast</b>: Loads instantly with no need for bulky app downloads.",
-      "<b>Universal & Accessible</b>: Works seamlessly on any device—phones, tablets, and desktops alike.",
+      "<strong>Privacy-Focused</strong>: Runs securely within your browser sandbox; no invasive tracking or spying from big app stores.",
+      "<strong>No App Stores, No Restrictions</strong>: Installs directly from your browser, bypassing corporate gatekeepers and censorship.",
+      "<strong>Instant & Automatic Updates</strong>: Always up-to-date, without notifications or manual updates.",
+      "<strong>Super Fast</strong>: Loads instantly with no need for bulky app downloads.",
+      "<strong>Universal & Accessible</strong>: Works seamlessly on any device—phones, tablets, and desktops alike.",
     ],
     otherAppsTitle: "Check out the live examples below and experience PWAs for yourself.",
     apps: [
@@ -121,11 +121,11 @@ const CONTENT = {
     },
     whyTitle: "Warum PWAs großartig sind",
     why: [
-      "<b>Datenschutz im Fokus</b>: Läuft sicher in Ihrer Browser-Sandbox; keine invasive Verfolgung oder Spionage durch große App Stores.",
-      "<b>Keine App Stores, keine Einschränkungen</b>: Installation direkt aus Ihrem Browser, umgeht Unternehmens-Gatekeeper und Zensur.",
-      "<b>Sofortige & automatische Updates</b>: Immer auf dem neuesten Stand, ohne Benachrichtigungen oder manuelle Updates.",
-      "<b>Superschnell</b>: Lädt sofort ohne umfangreiche App-Downloads.",
-      "<b>Universal & zugänglich</b>: Funktioniert nahtlos auf allen Geräten—Handys, Tablets und Desktops.",
+      "<strong>Datenschutz im Fokus</strong>: Läuft sicher in Ihrer Browser-Sandbox; keine invasive Verfolgung oder Spionage durch große App Stores.",
+      "<strong>Keine App Stores, keine Einschränkungen</strong>: Installation direkt aus Ihrem Browser, umgeht Unternehmens-Gatekeeper und Zensur.",
+      "<strong>Sofortige & automatische Updates</strong>: Immer auf dem neuesten Stand, ohne Benachrichtigungen oder manuelle Updates.",
+      "<strong>Superschnell</strong>: Lädt sofort ohne umfangreiche App-Downloads.",
+      "<strong>Universal & zugänglich</strong>: Funktioniert nahtlos auf allen Geräten—Handys, Tablets und Desktops.",
     ],
     otherAppsTitle: "Entdecken Sie die Live-Beispiele unten und erleben Sie PWAs selbst.",
     apps: [
@@ -163,11 +163,11 @@ const CONTENT = {
     },
     whyTitle: "Por qué las PWAs son increíbles",
     why: [
-      "<b>Enfocado en la privacidad</b>: Se ejecuta de forma segura dentro del sandbox de su navegador; sin rastreo invasivo ni espionaje de las grandes tiendas de aplicaciones.",
-      "<b>Sin tiendas de aplicaciones, sin restricciones</b>: Se instala directamente desde su navegador, evitando los guardianes corporativos y la censura.",
-      "<b>Actualizaciones instantáneas y automáticas</b>: Siempre actualizado, sin notificaciones ni actualizaciones manuales.",
-      "<b>Súper rápido</b>: Carga instantáneamente sin necesidad de descargas voluminosas.",
-      "<b>Universal y accesible</b>: Funciona perfectamente en cualquier dispositivo—teléfonos, tabletas y computadoras por igual.",
+      "<strong>Enfocado en la privacidad</strong>: Se ejecuta de forma segura dentro del sandbox de su navegador; sin rastreo invasivo ni espionaje de las grandes tiendas de aplicaciones.",
+      "<strong>Sin tiendas de aplicaciones, sin restricciones</strong>: Se instala directamente desde su navegador, evitando los guardianes corporativos y la censura.",
+      "<strong>Actualizaciones instantáneas y automáticas</strong>: Siempre actualizado, sin notificaciones ni actualizaciones manuales.",
+      "<strong>Súper rápido</strong>: Carga instantáneamente sin necesidad de descargas voluminosas.",
+      "<strong>Universal y accesible</strong>: Funciona perfectamente en cualquier dispositivo—teléfonos, tabletas y computadoras por igual.",
     ],
     otherAppsTitle: "Explore los ejemplos en vivo a continuación y experimente las PWAs por sí mismo.",
     apps: [
@@ -335,15 +335,11 @@ export default function Index() {
           </div>
           <div>
             <h2 className="text-xl font-semibold text-purple-700 dark:text-purple-200 mb-2">
-              {lang === "en"
-                ? "Why PWAs build a better Internet"
-                : lang === "de"
-                ? "Warum PWAs das Internet verbessern"
-                : "Por qué las PWAs mejoran Internet"}
+              {CONTENT[lang].whyTitle}
             </h2>
             <ul className="list-disc pl-5 text-gray-700 dark:text-gray-200 text-lg space-y-2">
-              {CONTENT[lang].why.map((msg, i) => (
-                <li key={i}>{msg}</li>
+              {CONTENT[lang].why.map((item, i) => (
+                <li key={i} dangerouslySetInnerHTML={{ __html: item }}></li>
               ))}
             </ul>
           </div>
