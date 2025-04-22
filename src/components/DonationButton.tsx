@@ -4,7 +4,11 @@ import { BadgeDollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DonationDialog from "@/components/DonationDialog";
 
-const DonationButton: React.FC = () => {
+interface DonationButtonProps {
+  lang: string;
+}
+
+const DonationButton: React.FC<DonationButtonProps> = ({ lang }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -20,7 +24,8 @@ const DonationButton: React.FC = () => {
       </Button>
       <DonationDialog 
         isOpen={isDialogOpen} 
-        onClose={() => setIsDialogOpen(false)} 
+        onClose={() => setIsDialogOpen(false)}
+        lang={lang}
       />
     </>
   );

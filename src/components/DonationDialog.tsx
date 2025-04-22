@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import {
   Dialog,
@@ -13,13 +12,14 @@ import PaymentStatus from "./donation/PaymentStatus";
 interface DonationDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  lang: string;
 }
 
 const PRESET_AMOUNTS = [1000, 5000, 10000, 21000];
 const POLLING_INTERVAL = 2000;
 const TIMEOUT_DURATION = 300000;
 
-const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
+const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose, lang }) => {
   const [amount, setAmount] = useState<number>(PRESET_AMOUNTS[0]);
   const [customAmount, setCustomAmount] = useState<string>("");
   const [lnurlData, setLnurlData] = useState<LnurlResponse | null>(null);
@@ -126,6 +126,7 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose }) => {
             onAmountSelect={setAmount}
             onCustomAmountChange={setCustomAmount}
             onProceed={handleProceedToPayment}
+            lang={lang}
           />
         )}
         {step === "pay" && invoice && (

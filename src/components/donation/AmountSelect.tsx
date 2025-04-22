@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -37,6 +36,7 @@ interface AmountSelectProps {
   onAmountSelect: (amount: number) => void;
   onCustomAmountChange: (value: string) => void;
   onProceed: () => void;
+  lang: string;
 }
 
 const AmountSelect: React.FC<AmountSelectProps> = ({
@@ -48,11 +48,9 @@ const AmountSelect: React.FC<AmountSelectProps> = ({
   onAmountSelect,
   onCustomAmountChange,
   onProceed,
+  lang,
 }) => {
-  // Get user's browser language or default to English
-  const userLang = navigator.language.split('-')[0];
-  const lang = userLang in TRANSLATIONS ? userLang : 'en';
-  const t = TRANSLATIONS[lang];
+  const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
 
   return (
     <>
