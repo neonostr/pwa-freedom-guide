@@ -1,3 +1,4 @@
+
 import { Apple, Chrome } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
@@ -370,7 +371,7 @@ export default function Index() {
 
       <footer className="text-center py-6 text-gray-500 dark:text-gray-400 w-full">
         <div className="mb-4 flex justify-center">
-          <DonationButton />
+          <DonationButton lang={lang} />
         </div>
         <div>
           Built by{" "}
