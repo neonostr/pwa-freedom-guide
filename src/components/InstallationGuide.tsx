@@ -1,5 +1,5 @@
 import React from "react";
-import { Chrome, Apple } from "lucide-react";
+import { Chrome } from "lucide-react";
 
 interface InstallationGuideProps {
   lang: string;
@@ -7,29 +7,31 @@ interface InstallationGuideProps {
 }
 
 export default function InstallationGuide({ lang, content }: InstallationGuideProps) {
-  // Safari icon based on Safari_browser_logo.svg from Wikipedia
+  // Safari icon from the provided SVG file
   const safariIcon = (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 1024 1024">
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 66.17 65.8">
       <defs>
-        <linearGradient id="b">
+        <linearGradient id="safari-grad-b">
           <stop offset="0" stopColor="#06c2e7"/>
-          <stop offset=".25000015" stopColor="#0db8ec"/>
-          <stop offset=".5000003" stopColor="#12aef1"/>
-          <stop offset=".75000012" stopColor="#1f86f9"/>
+          <stop offset=".25" stopColor="#0db8ec"/>
+          <stop offset=".5" stopColor="#12aef1"/>
+          <stop offset=".75" stopColor="#1f86f9"/>
           <stop offset="1" stopColor="#107ddd"/>
         </linearGradient>
-        <linearGradient id="a">
+        <linearGradient id="safari-grad-a">
           <stop offset="0" stopColor="#bdbdbd"/>
           <stop offset="1" stopColor="#fff"/>
         </linearGradient>
       </defs>
-      <circle cx="512" cy="512" r="512" fill="#fff"/>
-      <path fill="url(#b)" d="M380.83911 211.97671a28.870571 28.870571 0 0 1-28.87057 28.87057 28.870571 28.870571 0 0 1-28.87057-28.87057 28.870571 28.870571 0 0 1 28.87057-28.87057 28.870571 28.870571 0 0 1 28.87057 28.87057z" transform="translate(-318.88562 -180.59501)"/>
-      <path fill="#f4f2f3" d="M33.08292 4.01671l-.42092.42092V9.2928l.42092.42092.42092-.42092V4.43763z"/>
+      <circle cx="33.08" cy="32.9" r="32.9" fill="#fff"/>
+      <circle cx="33.08" cy="32.9" r="28.87" fill="url(#safari-grad-b)"/>
+      <path fill="#f4f2f3" d="M33.08 4.02a.42.42 0 00-.42.42v4.85c0 .23.19.42.42.42a.42.42 0 00.42-.42V4.44a.42.42 0 00-.42-.42zm-2.75.17c-.03 0-.06 0-.09 0-.23.03-.4.23-.37.47l.21 2.03c.02.23.23.4.46.37.23-.02.4-.23.38-.46l-.22-2.03c-.02-.2-.18-.36-.37-.38zm5.53 0c-.2.02-.36.17-.38.38l-.21 2.03c-.03.23.14.44.37.46.23.02.44-.14.46-.37l.22-2.03c.02-.23-.15-.44-.38-.47-.03 0-.06 0-.08 0z"/>
+      <path fill="#ff5150" d="m36.38 34.84-6.6-6.91 23.42-15.75z"/>
+      <path fill="#f1f1f1" d="m36.38 34.84-6.6-6.91-16.82 22.66z"/>
     </svg>
   );
 
-  // Chrome icon based on Google_Chrome_icon_(February_2022).svg from Wikipedia
+  // Chrome icon
   const chromeIcon = (
     <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 48 48">
       <defs>
@@ -81,7 +83,11 @@ export default function InstallationGuide({ lang, content }: InstallationGuidePr
     ),
     safari: safariIcon,
     chrome: chromeIcon,
-    appleIcon: <Apple className="w-5 h-5 inline align-text-bottom mr-1" />,
+    appleIcon: (
+      <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 2a9 9 0 0 0-9 9c0 4.17 2.84 7.67 6.69 8.69a.5.5 0 0 0 .62-.45V17.5c-2.5.5-3-1-3-1-.41-1.12-1-1.41-1-1.41-.82-.56.06-.55.06-.55.91.06 1.39.94 1.39.94.8 1.37 2.1.98 2.62.75.08-.58.31-.98.56-1.21-2-.23-4.1-1-4.1-4.44 0-.98.35-1.79.92-2.42-.09-.22-.4-1.13.09-2.35 0 0 .75-.24 2.44.91a8.5 8.5 0 0 1 4.5 0c1.69-1.15 2.44-.91 2.44-.91.49 1.22.18 2.13.09 2.35.57.63.91 1.44.91 2.42 0 3.47-2.1 4.2-4.1 4.42.32.27.6.8.6 1.62v2.42c0 .23.19.43.42.5A9 9 0 0 0 12 2z" />
+      </svg>
+    ),
     chromeIcon: <Chrome className="w-5 h-5 inline align-text-bottom mr-1" />
   };
 
@@ -98,7 +104,7 @@ export default function InstallationGuide({ lang, content }: InstallationGuidePr
         <div className="flex-1 bg-white/70 dark:bg-[#22235b60] rounded-lg p-4 pb-3 shadow-sm">
           <h3 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center">
             <span className="inline-block w-7 h-7 bg-gray-100 dark:bg-[#2b2e3d] rounded mr-2 flex items-center justify-center font-bold text-purple-500 dark:text-purple-300 text-lg">
-              {ICONS.appleIcon}
+              {ICONS.safari}
             </span>
             iOS (Safari)
           </h3>
