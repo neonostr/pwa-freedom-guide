@@ -1,73 +1,55 @@
-# Welcome to your Lovable project
 
-## Project info
+# PWA Freedom Guide
 
-**URL**: https://lovable.dev/projects/5ab6a82b-bd68-4991-ba8a-cf27e84fc811
+A free and open guide showing how to install Progressive Web Apps (PWAs) without app stores. Get freedom from censorship and control while enjoying native-like apps on iOS and Android.
 
-## How can I edit this code?
+## What are PWAs?
 
-There are several ways of editing your application.
+Progressive Web Apps (PWAs) are fast, private, and free from app stores. They combine the best features of websites and native apps, running entirely in your browser. This offers:
 
-**Use Lovable**
+- Enhanced privacy
+- Automatic updates
+- Freedom from app-store censorship
+- No gatekeepers controlling what you can install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5ab6a82b-bd68-4991-ba8a-cf27e84fc811) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- Clear installation guides for iOS and Android
+- Multilingual support (English, German, Spanish)
+- Dark mode support
+- Real-world PWA examples
+- Privacy-focused approach
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Visit [PWA Freedom Guide](https://pwa-freedom.guide)
+2. Choose your language
+3. Follow the installation instructions for your device
+4. Experience the freedom of PWAs!
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Support the Project
 
-Follow these steps:
+If you find this guide helpful and want to support its development, you can [zap me a coffee](https://zapmeacoffee.com/neo-nostrpurple-com) ⚡️
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Development
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+This project is built with:
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
 
-# Step 3: Install the necessary dependencies.
-npm i
+To run locally:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## License
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is open source and available under the MIT License.
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/5ab6a82b-bd68-4991-ba8a-cf27e84fc811) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

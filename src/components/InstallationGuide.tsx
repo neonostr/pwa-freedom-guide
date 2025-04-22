@@ -1,5 +1,5 @@
 import React from "react";
-import { Apple, Chrome } from "lucide-react";
+import { Chrome } from "lucide-react";
 
 interface InstallationGuideProps {
   lang: string;
@@ -7,35 +7,50 @@ interface InstallationGuideProps {
 }
 
 export default function InstallationGuide({ lang, content }: InstallationGuideProps) {
-  // Safari icon based on requested link https://en.m.wikipedia.org/wiki/File:Safari_browser_logo.svg
+  // Safari icon based on Safari_browser_logo.svg from Wikipedia
   const safariIcon = (
     <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 1024 1024">
-      <circle cx="512" cy="512" r="512" fill="#FFFFFF"/>
-      <circle cx="512" cy="512" r="474" fill="#0FB5EE"/>
-      <circle cx="512" cy="512" r="420" fill="#FFFFFF"/>
-      <linearGradient id="safari-red" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#C8010F" stopOpacity="1" />
-        <stop offset="100%" stopColor="#FF3647" stopOpacity="1" />
-      </linearGradient>
-      <linearGradient id="safari-blue" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#00329B" stopOpacity="1" />
-        <stop offset="100%" stopColor="#0868F9" stopOpacity="1" />
-      </linearGradient>
-      <path d="M512,92 L512,932" stroke="url(#safari-red)" strokeWidth="40"/>
-      <path d="M92,512 L932,512" stroke="url(#safari-blue)" strokeWidth="40"/>
+      <defs>
+        <linearGradient id="b">
+          <stop offset="0" stopColor="#06c2e7"/>
+          <stop offset=".25000015" stopColor="#0db8ec"/>
+          <stop offset=".5000003" stopColor="#12aef1"/>
+          <stop offset=".75000012" stopColor="#1f86f9"/>
+          <stop offset="1" stopColor="#107ddd"/>
+        </linearGradient>
+        <linearGradient id="a">
+          <stop offset="0" stopColor="#bdbdbd"/>
+          <stop offset="1" stopColor="#fff"/>
+        </linearGradient>
+      </defs>
+      <circle cx="512" cy="512" r="512" fill="#fff"/>
+      <path fill="url(#b)" d="M380.83911 211.97671a28.870571 28.870571 0 0 1-28.87057 28.87057 28.870571 28.870571 0 0 1-28.87057-28.87057 28.870571 28.870571 0 0 1 28.87057-28.87057 28.870571 28.870571 0 0 1 28.87057 28.87057z" transform="translate(-318.88562 -180.59501)"/>
+      <path fill="#f4f2f3" d="M33.08292 4.01671l-.42092.42092V9.2928l.42092.42092.42092-.42092V4.43763z"/>
     </svg>
   );
 
-  // Chrome icon based on requested link https://en.m.wikipedia.org/wiki/File:Google_Chrome_icon_(February_2022).svg
+  // Chrome icon based on Google_Chrome_icon_(February_2022).svg from Wikipedia
   const chromeIcon = (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="48" fill="#FFFFFF"/>
-      <path d="M50,13 A37,37 0 1,1 13,50 L50,50 Z" fill="#EA4335"/>
-      <path d="M87,50 A37,37 0 0,1 50,87 L50,50 Z" fill="#34A853"/>
-      <path d="M50,87 A37,37 0 0,1 13,50 L50,50 Z" fill="#FBBC05"/>
-      <path d="M50,13 A37,37 0 0,1 87,50 L50,50 Z" fill="#4285F4"/>
-      <circle cx="50" cy="50" r="15" fill="#FFFFFF"/>
-      <circle cx="50" cy="50" r="12" fill="#4285F4"/>
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 48 48">
+      <defs>
+        <linearGradient id="chrome-a" x1="3.2173" y1="15" x2="44.7812" y2="15">
+          <stop offset="0" stopColor="#d93025"/>
+          <stop offset="1" stopColor="#ea4335"/>
+        </linearGradient>
+        <linearGradient id="chrome-b" x1="20.7219" y1="47.6791" x2="41.5039" y2="11.6837">
+          <stop offset="0" stopColor="#fcc934"/>
+          <stop offset="1" stopColor="#fbbc04"/>
+        </linearGradient>
+        <linearGradient id="chrome-c" x1="26.5981" y1="46.5015" x2="5.8161" y2="10.506">
+          <stop offset="0" stopColor="#1e8e3e"/>
+          <stop offset="1" stopColor="#34a853"/>
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="23.9947" r="12" fill="#fff"/>
+      <path d="M24,12H44.7812a23.9939,23.9939,0,0,0-41.5639.0029L13.6079,30l.0093-.0024A11.9852,11.9852,0,0,1,24,12Z" fill="url(#chrome-a)"/>
+      <circle cx="24" cy="24" r="9.5" fill="#1a73e8"/>
+      <path d="M34.3913,30.0029,24.0007,48A23.994,23.994,0,0,0,44.78,12.0031H23.9989l-.0025.0093A11.985,11.985,0,0,1,34.3913,30.0029Z" fill="url(#chrome-b)"/>
+      <path d="M13.6086,30.0031,3.218,12.006A23.994,23.994,0,0,0,24.0025,48L34.3931,30.0029l-.0067-.0068a11.9852,11.9852,0,0,1-20.7778.007Z" fill="url(#chrome-c)"/>
     </svg>
   );
 
