@@ -121,11 +121,11 @@ const CONTENT = {
     },
     whyTitle: "Warum PWAs besser sind",
     why: [
-      "Universelle Kompatibilität mit Handys, Tablets und Desktops.",
-      "Mehr Privatsphäre, keine invasive Verfolgung oder Spionage durch große App Stores",
+      "Universelle Kompatibilität mit Smartphones, Tablets und Desktop-Computern.",
+      "Mehr Privatsphäre, kein aufdringliches Tracking oder Ausspionieren durch große App‑Stores.",
       "Immer auf dem neuesten Stand, ohne Benachrichtigungen oder manuelle Updates.",
-      "Keine Apple oder Google App Stores nötig: Installation kostenlos aus jedem Browser.",
-      "Keine Gatekeeper, keine Zensur—deine Wahl."
+      "Keine App‑Stores von Apple oder Google erforderlich: kostenlose Installation über jeden Browser.",
+      "Keine Gatekeeper, keine Zensur – deine Wahl."
     ],
     otherAppsTitle: "Entdecke die Live-Beispiele unten und erlebe PWAs selbst.",
     apps: [
@@ -163,11 +163,11 @@ const CONTENT = {
     },
     whyTitle: "Por qué las PWAs son mejores",
     why: [
-      "Compatibilidad universal con teléfonos, tabletas y computadoras.",
-      "Más privacidad, sin rastreo invasivo ni espionaje de las grandes tiendas de aplicaciones",
+      "Compatibilidad universal con teléfonos, tabletas y ordenadores de sobremesa.",
+      "Mayor privacidad, sin rastreos invasivos ni espionaje de las grandes tiendas de apps.",
       "Siempre actualizado, sin notificaciones ni actualizaciones manuales.",
-      "No necesitas las tiendas de Apple o Google: instala gratis desde cualquier navegador.",
-      "Sin intermediarios, sin censura—tu elección."
+      "Sin necesidad de las tiendas de apps de Apple o Google: instalación gratuita desde cualquier navegador.",
+      "Sin guardianes ni censura: tú eliges."
     ],
     otherAppsTitle: "Explore los ejemplos en vivo a continuación y experimente las PWAs por sí mismo.",
     apps: [
