@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { BadgeDollarSign } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const TRANSLATIONS = {
   en: {
@@ -53,6 +54,11 @@ const AmountSelect: React.FC<AmountSelectProps> = ({
 }) => {
   const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
 
+  const handlePresetAmountSelect = (presetAmount: number) => {
+    onAmountSelect(presetAmount);
+    onCustomAmountChange(presetAmount.toString()); // Update the input field with the selected amount
+  };
+
   return (
     <>
       <DialogHeader>
@@ -75,24 +81,20 @@ const AmountSelect: React.FC<AmountSelectProps> = ({
           <>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-1">{t.customAmount}</label>
-              <input
+              <Input
                 type="text"
                 value={customAmount}
                 onChange={(e) => onCustomAmountChange(e.target.value.replace(/[^0-9]/g, ""))}
-                onFocus={() => onAmountSelect(0)}
                 placeholder={`${t.enterCustomAmount} (${amount} sats)`}
-                className="w-full p-2 border rounded-md dark:bg-gray-800 dark:border-gray-700"
+                className="w-full dark:bg-gray-800"
               />
             </div>
             <div className="grid grid-cols-2 gap-2 mb-4">
               {presetAmounts.map((presetAmount) => (
                 <Button
                   key={presetAmount}
-                  variant={amount === presetAmount && !customAmount ? "default" : "outline"}
-                  onClick={() => {
-                    onAmountSelect(presetAmount);
-                    onCustomAmountChange("");
-                  }}
+                  variant={amount === presetAmount ? "default" : "outline"}
+                  onClick={() => handlePresetAmountSelect(presetAmount)}
                   className="w-full"
                 >
                   {presetAmount.toLocaleString()} sats
