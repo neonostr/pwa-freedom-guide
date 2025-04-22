@@ -1,4 +1,4 @@
-import { Apple, Chrome, Safari } from "lucide-react";
+import { Apple, Chrome } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
 
@@ -32,8 +32,20 @@ const ICONS = {
       <path d="M12 2v13" />
     </svg>
   ),
-  safari: <Safari className="w-5 h-5 inline align-text-bottom mr-1" />,
-  chrome: <Chrome className="w-5 h-5 inline align-text-bottom mr-1" />,
+  safari: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="#0066CC" />
+      <path d="M12 2v20M2 12h20" stroke="white" strokeWidth="1" />
+      <path d="M12 12L19 5M12 12L5 19" stroke="white" strokeWidth="1" />
+    </svg>
+  ),
+  chrome: (
+    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="#4285F4" />
+      <circle cx="12" cy="12" r="4" fill="#FFFFFF" />
+      <path d="M12 8v8M8 12h8" stroke="#DB4437" strokeWidth="2" />
+    </svg>
+  ),
   appleIcon: <Apple className="w-5 h-5 inline align-text-bottom mr-1" />,
   chromeIcon: <Chrome className="w-5 h-5 inline align-text-bottom mr-1" />
 };
