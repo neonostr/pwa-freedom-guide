@@ -1,5 +1,6 @@
+
 import React from "react";
-import { Chrome } from "lucide-react";
+import { Chrome, Apple } from "lucide-react";
 
 interface InstallationGuideProps {
   lang: string;
