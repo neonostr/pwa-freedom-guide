@@ -6,6 +6,30 @@ import { toast } from "@/hooks/use-toast";
 const POLLING_INTERVAL = 2000;
 const TIMEOUT_DURATION = 300000;
 
+const TRANSLATIONS = {
+  en: {
+    amountError: "Amount must be between {min} and {max} sats",
+    paymentSuccess: "Your support is greatly appreciated.",
+    paymentTimeout: "Payment timeout. Please try again.",
+    fetchError: "Failed to load donation info. Please try again later.",
+    invoiceError: "Failed to generate invoice. Please try again."
+  },
+  de: {
+    amountError: "Der Betrag muss zwischen {min} und {max} Sats liegen",
+    paymentSuccess: "Deine Unterstützung wird sehr geschätzt.",
+    paymentTimeout: "Zahlungszeitüberschreitung. Bitte versuche es erneut.",
+    fetchError: "Fehler beim Laden der Spendeninformationen. Bitte versuche es später noch einmal.",
+    invoiceError: "Fehler beim Generieren der Rechnung. Bitte versuche es erneut."
+  },
+  es: {
+    amountError: "La cantidad debe estar entre {min} y {max} sats",
+    paymentSuccess: "Tu apoyo es muy apreciado.",
+    paymentTimeout: "Tiempo de pago agotado. Por favor, inténtalo de nuevo.",
+    fetchError: "No se pudo cargar la información de la donación. Por favor, inténtalo más tarde.",
+    invoiceError: "No se pudo generar la factura. Por favor, inténtalo de nuevo."
+  }
+};
+
 export const useDonationPayment = (presetAmounts: number[]) => {
   const [amount, setAmount] = useState<number>(presetAmounts[0]);
   const [customAmount, setCustomAmount] = useState<string>("");
@@ -16,6 +40,9 @@ export const useDonationPayment = (presetAmounts: number[]) => {
   const [step, setStep] = useState<"select" | "pay" | "thankyou">("select");
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const [lang, setLang] = useState<string>("en");
+
+  const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
 
   const loadLnurlData = () => {
     setIsLoading(true);
@@ -25,7 +52,7 @@ export const useDonationPayment = (presetAmounts: number[]) => {
         setError(null);
       })
       .catch(err => {
-        setError("Failed to load donation info. Please try again later.");
+        setError(t.fetchError);
         console.error("LNURL fetch error:", err);
       })
       .finally(() => {
@@ -33,12 +60,19 @@ export const useDonationPayment = (presetAmounts: number[]) => {
       });
   };
 
-  const handleProceedToPayment = async () => {
+  const handleProceedToPayment = async (language: string = "en") => {
+    setLang(language);
     if (!lnurlData) return;
     const finalAmount = customAmount ? parseInt(customAmount) : amount;
     if (finalAmount < lnurlData.minSendable / 1000 || finalAmount > lnurlData.maxSendable / 1000) {
+      const minSats = lnurlData.minSendable / 1000;
+      const maxSats = lnurlData.maxSendable / 1000;
+      const errorMessage = TRANSLATIONS[language].amountError
+        .replace("{min}", minSats.toString())
+        .replace("{max}", maxSats.toString());
+      
       toast({
-        description: `Amount must be between ${lnurlData.minSendable / 1000} and ${lnurlData.maxSendable / 1000} sats`,
+        description: errorMessage,
         variant: "destructive",
       });
       return;
@@ -48,23 +82,23 @@ export const useDonationPayment = (presetAmounts: number[]) => {
       const invoiceData = await generateInvoice(finalAmount, lnurlData);
       setInvoice(invoiceData);
       setStep("pay");
-      startPaymentPolling(invoiceData);
+      startPaymentPolling(invoiceData, language);
     } catch (err) {
-      setError("Failed to generate invoice. Please try again.");
+      setError(TRANSLATIONS[language].invoiceError);
       console.error("Invoice generation error:", err);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const startPaymentPolling = (invoiceData: InvoiceResponse) => {
+  const startPaymentPolling = (invoiceData: InvoiceResponse, language: string) => {
     clearTimeouts();
     const intervalId = setInterval(() => {
       if (invoiceData.verify) {
         checkPaymentStatus(invoiceData.verify)
           .then(status => {
             if (status.settled) {
-              handlePaymentSuccess();
+              handlePaymentSuccess(language);
             }
           })
           .catch(err => console.error("Payment status check error:", err));
@@ -74,17 +108,17 @@ export const useDonationPayment = (presetAmounts: number[]) => {
     
     const timeout = setTimeout(() => {
       clearInterval(intervalId);
-      setError("Payment timeout. Please try again.");
+      setError(TRANSLATIONS[language].paymentTimeout);
       setStep("select");
     }, TIMEOUT_DURATION);
     setTimeoutId(timeout);
   };
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = (language: string) => {
     clearTimeouts();
     setStep("thankyou");
     toast({
-      description: "Your support is greatly appreciated.",
+      description: TRANSLATIONS[language].paymentSuccess,
     });
   };
 

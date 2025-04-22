@@ -66,9 +66,10 @@ const DonationDialog: React.FC<DonationDialogProps> = ({ isOpen, onClose, lang }
             isLoading={isLoading}
             error={error}
             onClose={handleClose}
+            lang={lang}
           />
         )}
-        {step === "thankyou" && <PaymentStatus onClose={handleClose} />}
+        {step === "thankyou" && <PaymentStatus onClose={handleClose} lang={lang} />}
       </DialogContent>
     </Dialog>
   );

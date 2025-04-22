@@ -36,7 +36,7 @@ interface AmountSelectProps {
   presetAmounts: number[];
   onAmountSelect: (amount: number) => void;
   onCustomAmountChange: (value: string) => void;
-  onProceed: () => void;
+  onProceed: (lang: string) => void;
   lang: string;
 }
 
@@ -104,7 +104,7 @@ const AmountSelect: React.FC<AmountSelectProps> = ({
       </div>
       <DialogFooter>
         <Button
-          onClick={onProceed}
+          onClick={() => onProceed(lang)}
           disabled={isLoading || (!amount && !customAmount) || !!error}
         >
           {t.continue}
