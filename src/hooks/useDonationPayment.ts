@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { fetchLnurlData, generateInvoice, checkPaymentStatus, LnurlResponse, InvoiceResponse } from "@/services/coinosService";
 import { toast } from "@/hooks/use-toast";
@@ -113,6 +114,7 @@ export const useDonationPayment = (presetAmounts: number[]) => {
   const handlePaymentSuccess = (language: string) => {
     clearTimeouts();
     setStep("thankyou");
+    // Success toast notification removed
   };
 
   const clearTimeouts = () => {
