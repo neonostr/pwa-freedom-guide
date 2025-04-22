@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { fetchLnurlData, generateInvoice, checkPaymentStatus, LnurlResponse, InvoiceResponse } from "@/services/coinosService";
 import { toast } from "@/hooks/use-toast";
@@ -9,21 +8,18 @@ const TIMEOUT_DURATION = 300000;
 const TRANSLATIONS = {
   en: {
     amountError: "Amount must be between {min} and {max} sats",
-    paymentSuccess: "Your support is greatly appreciated.",
     paymentTimeout: "Payment timeout. Please try again.",
     fetchError: "Failed to load donation info. Please try again later.",
     invoiceError: "Failed to generate invoice. Please try again."
   },
   de: {
     amountError: "Der Betrag muss zwischen {min} und {max} Sats liegen",
-    paymentSuccess: "Deine Unterstützung wird sehr geschätzt.",
     paymentTimeout: "Zahlungszeitüberschreitung. Bitte versuche es erneut.",
     fetchError: "Fehler beim Laden der Spendeninformationen. Bitte versuche es später noch einmal.",
     invoiceError: "Fehler beim Generieren der Rechnung. Bitte versuche es erneut."
   },
   es: {
     amountError: "La cantidad debe estar entre {min} y {max} sats",
-    paymentSuccess: "Tu apoyo es muy apreciado.",
     paymentTimeout: "Tiempo de pago agotado. Por favor, inténtalo de nuevo.",
     fetchError: "No se pudo cargar la información de la donación. Por favor, inténtalo más tarde.",
     invoiceError: "No se pudo generar la factura. Por favor, inténtalo de nuevo."
@@ -117,9 +113,6 @@ export const useDonationPayment = (presetAmounts: number[]) => {
   const handlePaymentSuccess = (language: string) => {
     clearTimeouts();
     setStep("thankyou");
-    toast({
-      description: TRANSLATIONS[language].paymentSuccess,
-    });
   };
 
   const clearTimeouts = () => {

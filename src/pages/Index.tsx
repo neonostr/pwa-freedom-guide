@@ -1,5 +1,4 @@
-
-import { Apple, Chrome } from "lucide-react";
+import { Apple, Chrome, Safari } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import DonationButton from "@/components/DonationButton";
 
@@ -33,26 +32,10 @@ const ICONS = {
       <path d="M12 2v13" />
     </svg>
   ),
-  safari: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" fill="#0066CC" />
-      <path d="M12 2v20M2 12h20" stroke="white" strokeWidth="1" />
-      <path d="M12 12L19 5M12 12L5 19" stroke="white" strokeWidth="1" />
-    </svg>
-  ),
-  chrome: (
-    <svg className="w-5 h-5 inline align-text-bottom mr-1" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" fill="#4285F4" />
-      <circle cx="12" cy="12" r="4" fill="#FFFFFF" />
-      <path d="M12 8v8M8 12h8" stroke="#DB4437" strokeWidth="2" />
-    </svg>
-  ),
-  appleIcon: (
-    <Apple className="w-5 h-5 inline align-text-bottom mr-1" />
-  ),
-  chromeIcon: (
-    <Chrome className="w-5 h-5 inline align-text-bottom mr-1" />
-  ),
+  safari: <Safari className="w-5 h-5 inline align-text-bottom mr-1" />,
+  chrome: <Chrome className="w-5 h-5 inline align-text-bottom mr-1" />,
+  appleIcon: <Apple className="w-5 h-5 inline align-text-bottom mr-1" />,
+  chromeIcon: <Chrome className="w-5 h-5 inline align-text-bottom mr-1" />
 };
 
 const CONTENT = {
@@ -152,7 +135,7 @@ const CONTENT = {
         { step: "Toque el ícono Compartir.", icon: "share" },
         { step: "Elija \"Añadir a la pantalla de inicio\".", icon: "plus" },
         { step: "Toque Añadir.", icon: "plus" },
-        { step: "¡La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.", icon: "home" },
+        { step: "��La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.", icon: "home" },
       ],
       android: [
         { step: "Abra en Chrome o Firefox.", icon: "chrome" },
