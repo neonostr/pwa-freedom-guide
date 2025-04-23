@@ -1,6 +1,6 @@
 
 export const getShareableUrl = () => {
-  return "what-is-a-pwa.app";
+  return "https://what-is-a-pwa.app";
 };
 
 export const copyToClipboard = async (text: string) => {

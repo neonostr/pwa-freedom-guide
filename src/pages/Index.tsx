@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import Header from "@/components/Header";
@@ -7,9 +6,6 @@ import InstallationGuide from "@/components/InstallationGuide";
 import WhyPWAs from "@/components/WhyPWAs";
 import AppShowcase from "@/components/AppShowcase";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Share } from "lucide-react";
-import { getShareableUrl, copyToClipboard } from "@/utils/shareUtils";
 
 const CONTENT = {
   en: {
@@ -155,17 +151,6 @@ export default function Index() {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
-  const handleShare = async () => {
-    const url = getShareableUrl();
-    const success = await copyToClipboard(url);
-    
-    toast({
-      title: success ? "Link copied!" : "Failed to copy link",
-      description: success ? "Share this PWA guide with others" : "Please try again",
-      duration: 2000,
-    });
-  };
-
   function handleAnchor(e) {
     e.preventDefault();
     const ref = sectionRefs[lang];
@@ -187,18 +172,6 @@ export default function Index() {
           tabIndex={-1}
           className="max-w-2xl w-full space-y-10 mx-auto relative"
         >
-          <div className="absolute top-0 right-0">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleShare}
-              className="flex items-center gap-2"
-            >
-              <Share className="h-4 w-4" />
-              Share
-            </Button>
-          </div>
-          
           <PWAIntroduction title={contentForLang.title} introText={contentForLang.what} />
           <InstallationGuide lang={lang} content={contentForLang} />
           <WhyPWAs whyTitle={contentForLang.whyTitle} whyItems={contentForLang.why} />
