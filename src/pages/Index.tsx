@@ -5,6 +5,8 @@ import InstallationGuide from "@/components/InstallationGuide";
 import WhyPWAs from "@/components/WhyPWAs";
 import AppShowcase from "@/components/AppShowcase";
 import Footer from "@/components/Footer";
+import CopyButton from "@/components/CopyButton";
+import { useToast } from "@/components/ui/use-toast";
 
 const CONTENT = {
   en: {
@@ -47,7 +49,9 @@ const CONTENT = {
     developerName: "PWA enthusiasts",
     developerDescription: "for a free and open web.",
     donateButton: "Zap me a coffee",
-    thankyou: "Thank you for your support!"
+    thankyou: "Thank you for your support!",
+    copyURLLabel: "Share this site",
+    copiedMessage: "Link copied to clipboard!"
   },
   de: {
     title: "Was ist eine PWA?",
@@ -89,7 +93,9 @@ const CONTENT = {
     developerName: "PWA-Enthusiasten",
     developerDescription: "für ein freies und offenes Web.",
     donateButton: "Spendiere einen Kaffee",
-    thankyou: "Vielen Dank für deine Unterstützung!"
+    thankyou: "Vielen Dank für deine Unterstützung!",
+    copyURLLabel: "Diese Seite teilen",
+    copiedMessage: "Link in die Zwischenablage kopiert!"
   },
   es: {
     title: "¿Qué es una PWA?",
@@ -131,13 +137,16 @@ const CONTENT = {
     developerName: "entusiastas de PWA",
     developerDescription: "para una web libre y abierta.",
     donateButton: "Invítame un café",
-    thankyou: "¡Gracias por tu apoyo!"
+    thankyou: "¡Gracias por tu apoyo!",
+    copyURLLabel: "Compartir este sitio",
+    copiedMessage: "¡Enlace copiado al portapapeles!"
   },
 };
 
 export default function Index() {
   const [lang, setLang] = useState("en");
   const [dark, setDark] = useState(false);
+  const { toast } = useToast();
 
   const sectionRefs = {
     en: useRef<HTMLDivElement>(null),
@@ -156,6 +165,13 @@ export default function Index() {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
+  
+  function handleCopy() {
+    navigator.clipboard.writeText("https://www.what-is-a-pwa.app");
+    toast({
+      description: contentForLang.copiedMessage,
+    });
+  }
 
   const contentForLang = CONTENT[lang] || CONTENT.en;
 
@@ -171,6 +187,18 @@ export default function Index() {
           className="max-w-2xl w-full space-y-10 mx-auto"
         >
           <PWAIntroduction title={contentForLang.title} introText={contentForLang.what} />
+          
+          <div className="flex justify-center mb-6">
+            <button
+              onClick={handleCopy}
+              className="flex items-center gap-2 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 px-4 py-2 rounded-full hover:bg-purple-200 dark:hover:bg-purple-800/40 transition-colors"
+            >
+              <span>{contentForLang.copyURLLabel}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+          </div>
           
           <InstallationGuide lang={lang} content={contentForLang} />
           
