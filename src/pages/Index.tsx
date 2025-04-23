@@ -167,7 +167,8 @@ export default function Index() {
   }
   
   function handleCopy() {
-    navigator.clipboard.writeText("https://www.what-is-a-pwa.app");
+    const url = "what-is-a-pwa.app";
+    navigator.clipboard.writeText(url);
     toast({
       description: contentForLang.copiedMessage,
     });
