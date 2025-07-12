@@ -15,7 +15,7 @@ export default function Footer({ lang }: FooterProps) {
       <div>
         Built by{" "}
         <a 
-          href="https://github.com/neonostr" 
+          href="https://neo21.dev" 
           target="_blank" 
           rel="noopener noreferrer"
           className="text-blue-600 dark:text-blue-400 hover:underline"
