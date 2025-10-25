@@ -18,16 +18,22 @@ const CONTENT = {
       ios: [
         { step: "Open the site in Safari.", icon: "safari" },
         { step: "Tap the Share icon.", icon: "share" },
-        { step: "Choose \"Add to Home Screen.\"", icon: "plus" },
+        { step: 'Choose "Add to Home Screen."', icon: "plus" },
         { step: "Tap Add.", icon: "plus" },
-        { step: "The app is now on your home screen! Open it from there to get the full PWA experience.", icon: "home" },
+        {
+          step: "The app is now on your home screen! Open it from there to get the full PWA experience.",
+          icon: "home",
+        },
       ],
       android: [
         { step: "Open in Chrome or Firefox.", icon: "chrome" },
         { step: "Tap the browser menu (⋮ or ≡).", icon: "menu" },
-        { step: "Select \"Add to Home screen.\"", icon: "home" },
+        { step: 'Select "Add to Home screen."', icon: "home" },
         { step: "Confirm to install.", icon: "plus" },
-        { step: "The app is now on your home screen! Open it from there to get the full PWA experience.", icon: "home" },
+        {
+          step: "The app is now on your home screen! Open it from there to get the full PWA experience.",
+          icon: "home",
+        },
       ],
     },
     whyTitle: "Why PWAs are better",
@@ -36,7 +42,7 @@ const CONTENT = {
       "More privacy, no invasive tracking or spying from big app stores",
       "Always up-to-date, without notifications or manual updates.",
       "No need for Apple or Google app stores: install free from any browser.",
-      "No gatekeepers, no censorship—your choice."
+      "No gatekeepers, no censorship, your choice.",
     ],
     otherAppsTitle: "Check out the live examples below and experience PWAs for yourself.",
     apps: [
@@ -48,7 +54,7 @@ const CONTENT = {
     developerName: "PWA enthusiasts",
     developerDescription: "for a free and open web.",
     donateButton: "Zap me a coffee",
-    thankyou: "Thank you for your support!"
+    thankyou: "Thank you for your support!",
   },
   de: {
     title: "Was ist eine PWA?",
@@ -60,16 +66,22 @@ const CONTENT = {
       ios: [
         { step: "Öffne die Seite in Safari.", icon: "safari" },
         { step: "Tippe auf das Teilen-Symbol.", icon: "share" },
-        { step: "Wähle \"Zum Home-Bildschirm hinzufügen\".", icon: "plus" },
+        { step: 'Wähle "Zum Home-Bildschirm hinzufügen".', icon: "plus" },
         { step: "Tippe auf Hinzufügen.", icon: "plus" },
-        { step: "Die App ist jetzt auf deinem Startbildschirm! Öffne sie von dort für die volle PWA-Erfahrung.", icon: "home" },
+        {
+          step: "Die App ist jetzt auf deinem Startbildschirm! Öffne sie von dort für die volle PWA-Erfahrung.",
+          icon: "home",
+        },
       ],
       android: [
         { step: "In Chrome oder Firefox öffnen.", icon: "chrome" },
         { step: "Tippe auf das Browser-Menü (⋮ oder ≡).", icon: "menu" },
-        { step: "Wähle \"Zum Startbildschirm hinzufügen\".", icon: "home" },
+        { step: 'Wähle "Zum Startbildschirm hinzufügen".', icon: "home" },
         { step: "Installation bestätigen.", icon: "plus" },
-        { step: "Die App ist jetzt auf deinem Startbildschirm! Öffne sie von dort für die volle PWA-Erfahrung.", icon: "home" },
+        {
+          step: "Die App ist jetzt auf deinem Startbildschirm! Öffne sie von dort für die volle PWA-Erfahrung.",
+          icon: "home",
+        },
       ],
     },
     whyTitle: "Warum PWAs besser sind",
@@ -78,7 +90,7 @@ const CONTENT = {
       "Mehr Privatsphäre, kein aufdringliches Tracking oder Ausspionieren durch große App‑Stores.",
       "Immer auf dem neuesten Stand, ohne Benachrichtigungen oder manuelle Updates.",
       "Keine App‑Stores von Apple oder Google erforderlich: kostenlose Installation über jeden Browser.",
-      "Keine Gatekeeper, keine Zensur – deine Wahl."
+      "Keine Gatekeeper, keine Zensur – deine Wahl.",
     ],
     otherAppsTitle: "Entdecke die Live-Beispiele unten und erlebe PWAs selbst.",
     apps: [
@@ -90,7 +102,7 @@ const CONTENT = {
     developerName: "PWA-Enthusiasten",
     developerDescription: "für ein freies und offenes Web.",
     donateButton: "Spendiere einen Kaffee",
-    thankyou: "Vielen Dank für deine Unterstützung!"
+    thankyou: "Vielen Dank für deine Unterstützung!",
   },
   es: {
     title: "¿Qué es una PWA?",
@@ -102,16 +114,22 @@ const CONTENT = {
       ios: [
         { step: "Abra el sitio en Safari.", icon: "safari" },
         { step: "Toque el ícono Compartir.", icon: "share" },
-        { step: "Elija \"Añadir a la pantalla de inicio\".", icon: "plus" },
+        { step: 'Elija "Añadir a la pantalla de inicio".', icon: "plus" },
         { step: "Toque Añadir.", icon: "plus" },
-        { step: "La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.", icon: "home" },
+        {
+          step: "La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.",
+          icon: "home",
+        },
       ],
       android: [
         { step: "Abra en Chrome o Firefox.", icon: "chrome" },
         { step: "Toque el menú del navegador (⋮ o ≡).", icon: "menu" },
-        { step: "Seleccione \"Añadir a la pantalla de inicio\".", icon: "home" },
+        { step: 'Seleccione "Añadir a la pantalla de inicio".', icon: "home" },
         { step: "Confirme la instalación.", icon: "plus" },
-        { step: "¡La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.", icon: "home" },
+        {
+          step: "¡La aplicación está ahora en su pantalla de inicio! Ábrala desde allí para obtener la experiencia PWA completa.",
+          icon: "home",
+        },
       ],
     },
     whyTitle: "Por qué las PWAs son mejores",
@@ -120,7 +138,7 @@ const CONTENT = {
       "Mayor privacidad, sin rastreos invasivos ni espionaje de las grandes tiendas de apps.",
       "Siempre actualizado, sin notificaciones ni actualizaciones manuales.",
       "Sin necesidad de las tiendas de apps de Apple o Google: instalación gratuita desde cualquier navegador.",
-      "Sin guardianes ni censura: tú eliges."
+      "Sin guardianes ni censura: tú eliges.",
     ],
     otherAppsTitle: "Explore los ejemplos en vivo a continuación y experimente las PWAs por sí mismo.",
     apps: [
@@ -132,7 +150,7 @@ const CONTENT = {
     developerName: "entusiastas de PWA",
     developerDescription: "para una web libre y abierta.",
     donateButton: "Invítame un café",
-    thankyou: "¡Gracias por tu apoyo!"
+    thankyou: "¡Gracias por tu apoyo!",
   },
 };
 
