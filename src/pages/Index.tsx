@@ -41,7 +41,7 @@ const CONTENT = {
       "Universal compatibility with phones, tablets and desktops.",
       "More privacy, no invasive tracking or spying from big app stores",
       "Always up-to-date, without notifications or manual updates.",
-      "No need for Apple or Google app stores: install free from any browser.",
+      "No need for Apple or Google app stores: Install free from any browser.",
       "No gatekeepers, no censorship, your choice.",
     ],
     otherAppsTitle: "Check out the live examples below and experience PWAs for yourself.",
